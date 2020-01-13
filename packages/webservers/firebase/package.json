@@ -1,6 +1,6 @@
 {
   "name": "firebase",
-  "version": "1.4.0",
+  "version": "1.3.0",
   "description": "> TODO: description",
   "author": "yurikrupnik <krupnik.yuri@gmail.com>",
   "homepage": "https://github.com/yurikrupnik/mussia3/tree/master/packages/webservers/firebase#readme",
@@ -67,7 +67,7 @@
     "react-router-dom": "^5.0.0",
     "socket.io": "^2.2.0",
     "socket.io-client": "^2.2.0",
-    "styled-components": "^4.4.0"
+    "styled-components": "^5.0.0"
   },
   "devDependencies": {
     "@testing-library/react": "^9.3.3",
