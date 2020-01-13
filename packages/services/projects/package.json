@@ -16,10 +16,10 @@
   "config": {
     "port": "7022",
     "modulePath": "/packages/services/projects",
-    "docker_image_org_name": "mussia_projects",
-    "project": "client-apps-monorepo",
+    "docker_image_name": "mussia3_projects",
+    "docker_image_org_name": "yurikrupnik",
+    "project": "mussia3",
     "service": "projects",
-    "docker_image_name": "yurikrupnik",
     "db": "ds263876.mlab.com:63876/client-app-projects"
   },
   "repository": {

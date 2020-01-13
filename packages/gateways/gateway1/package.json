@@ -16,9 +16,9 @@
   "config": {
     "port": "9011",
     "modulePath": "/packages/gateways/gateway1",
-    "docker_image_name": "client-apps_gateway1",
+    "docker_image_name": "mussia3_gateway1",
     "docker_image_org_name": "yurikrupnik",
-    "project": "client-apps-monorepo",
+    "project": "mussia3",
     "service": "gateway1"
   },
   "repository": {
