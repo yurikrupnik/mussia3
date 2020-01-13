@@ -28,7 +28,6 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 // console.log('firebase', firebase.auth().onAuthStateChanged);
 // console.log('auth', auth);
-// auth()
 firebase.auth()
     .onAuthStateChanged((user) => {
         if (user) {
