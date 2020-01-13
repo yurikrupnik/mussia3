@@ -1,4 +1,4 @@
-import Screen1 from '@krupnik/screen1';
+import Screen1 from '@mussia/screen1';
 // import Loadable from '../Loadable';
 // import Projects from './Projects';
 // import React from 'react';
