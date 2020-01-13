@@ -1,0 +1,24 @@
+{
+  "tags": {
+    "allowUnknownTags": true
+  },
+  "source": {
+    "include": "src",
+    "excludePattern": "(node_modules|docs|dist|ejs)",
+    "includePattern": ".(js|jsx)$"
+  },
+  "sourceType": "module",
+  "opts": {
+    "encoding": "utf8",
+    "recurse": true,
+    "verbose": true,
+    "destination": "dist/assets/docs"
+  },
+  "templates": {
+    "cleverLinks": false,
+    "monospaceLinks": false
+  },
+  "plugins": [
+    "plugins/markdown"
+  ]
+}

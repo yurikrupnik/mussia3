@@ -15,11 +15,11 @@
   },
   "config": {
     "port": "7000",
-    "modulePath": "/packages/services/service1",
-    "docker_image_org_name": "client-apps_service1",
+    "modulePath": "/packages/services/users",
+    "docker_image_org_name": "mussia_users",
     "docker_image_name": "yurikrupnik",
     "project": "client-apps-monorepo",
-    "service": "service1",
+    "service": "users",
     "db": "ds215759.mlab.com:15759/client-app-users"
   },
   "repository": {

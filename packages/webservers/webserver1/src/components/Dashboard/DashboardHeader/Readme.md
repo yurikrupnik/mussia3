@@ -1,0 +1,7 @@
+Users example:
+
+```jsx
+<DashboardHeader />
+```
+
+

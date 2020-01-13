@@ -16,7 +16,7 @@
   "config": {
     "port": "7022",
     "modulePath": "/packages/services/projects",
-    "docker_image_org_name": "client-apps_projects",
+    "docker_image_org_name": "mussia_projects",
     "project": "client-apps-monorepo",
     "service": "projects",
     "docker_image_name": "yurikrupnik",

@@ -1,0 +1,92 @@
+{
+  "name": "webserver1",
+  "version": "1.0.0",
+  "description": "> TODO: description",
+  "author": "yurikrupnik <krupnik.yuri@gmail.com>",
+  "homepage": "https://github.com/yurikrupnik/mussia3/tree/master/packages/webservers/webserver1#readme",
+  "license": "ISC",
+  "main": "dist/server.js",
+  "files": [
+    "dist"
+  ],
+  "private": true,
+  "engines": {
+    "node": "12"
+  },
+  "config": {
+    "port": "9000",
+    "modulePath": "/packages/webservers/webserver1",
+    "docker_image_org_name": "mussia_webserver1",
+    "docker_image_name": "yurikrupnik"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yurikrupnik/mussia3.git"
+  },
+  "scripts": {
+    "start": "run-p start:client start:server",
+    "start:server": "webpack --config=../../../webpack.config.server.js -w --color",
+    "start:client": "webpack-dev-server --config=../../../webpack.config.client.js --color",
+    "prebuild": "rimraf dist",
+    "lint": "eslint src --ext .js,.jsx --color",
+    "test": "jest src --colors",
+    "build": "run-p build:client build:server",
+    "build:client": "webpack --config=../../../webpack.config.client.js --env.prod --color",
+    "build:server": "webpack --config=../../../webpack.config.server.js --env.prod --color",
+    "e2e": "jest e2e --colors",
+    "docker:build": "docker build -t $npm_package_config_docker_image_name/$npm_package_config_docker_image_name . --force-rm --build-arg modulePath=$npm_package_config_modulePath --build-arg distFolder=$npm_package_files_0",
+    "docker:run": "docker run -d -p $npm_package_config_port:$npm_package_config_port -e PORT=$npm_package_config_port $npm_package_config_docker_image_name/$npm_package_config_docker_image_name",
+    "docker:test": "npm run e2e",
+    "docker:stop": "docker stop $(docker ps -q)",
+    "docker:local": "run-s docker:build docker:run docker:test docker:stop",
+    "predeploy": "npm run build",
+    "deploy": "gcloud app deploy ./dist/app.yml"
+  },
+  "bugs": {
+    "url": "https://github.com/yurikrupnik/mussia3/issues"
+  },
+  "dependencies": {
+    "@loadable/component": "^5.10.3",
+    "@loadable/server": "^5.12.0",
+    "@material-ui/core": "^4.7.0",
+    "@material-ui/icons": "^4.4.3",
+    "@mussia/button": "^2.0.0",
+    "@mussia/list": "^2.0.0",
+    "@mussia/list-styled": "^2.0.0",
+    "@mussia/render": "^2.0.0",
+    "@mussia/screen1": "^2.0.0",
+    "axios": "^0.19.1",
+    "cors": "^2.8.5",
+    "custom-react": "^3.0.1",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "express-http-proxy": "^1.6.0",
+    "formik": "^2.0.1",
+    "helmet": "^3.21.2",
+    "morgan": "^1.9.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
+    "react-render-html": "^0.6.0",
+    "react-router": "^5.0.0",
+    "react-router-dom": "^5.0.0",
+    "socket.io": "^2.2.0",
+    "socket.io-client": "^2.2.0",
+    "styled-components": "^4.4.0"
+  },
+  "devDependencies": {
+    "@loadable/babel-plugin": "^5.10.3",
+    "@testing-library/react": "^9.3.3",
+    "moxios": "^0.4.0",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.0"
+  },
+  "jest": {
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native|react-navigation)"
+    ],
+    "moduleNameMapper": {
+      "\\.(css|less|scss)$": "identity-obj-proxy"
+    }
+  }
+}

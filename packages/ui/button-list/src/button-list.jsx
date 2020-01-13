@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '@krupnik/button';
+import Button from '@mussia/button';
 
 const ButtonList = () => {
     const ar = [

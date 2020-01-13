@@ -1,0 +1,21 @@
+.header {
+  display: flex;
+
+  a {
+    text-decoration: none;
+  }
+
+  .navLink {
+    line-height: 2;
+    font-size: 17px;
+    height: 30px;
+    padding: 10px;
+    margin-right: 10px;
+    text-transform: uppercase;
+    color: black;
+  }
+
+  .active {
+    background: #e4e4e4;
+  }
+}

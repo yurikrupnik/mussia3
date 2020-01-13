@@ -1,0 +1,7 @@
+Register example:
+
+```jsx
+<Register />
+```
+
+

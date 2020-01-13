@@ -1,0 +1,7 @@
+Projects example:
+
+```jsx
+<Projects />
+```
+
+

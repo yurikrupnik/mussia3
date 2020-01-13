@@ -9,16 +9,16 @@ async function* removeVersion(versions) {
     console.log('versions', versions);
     for(const version of versions) {
         console.log(version);
-        yield await exec(`npm unpublish @krupnik/button@${version}`);
+        yield await exec(`npm unpublish @mussia/button@${version}`);
     }
 };
 async function c(v) {
-    return await exec(`npm unpublish @krupnik/render@${v}`);
+    return await exec(`npm unpublish @mussia/render@${v}`);
 }
 
 
 async function removeVersions() {
-    const { stdout, stderr } = await exec('npm view @krupnik/render versions --json');
+    const { stdout, stderr } = await exec('npm view @mussia/render versions --json');
     const versions = JSON.parse(stdout);
     const sliced = versions.reverse().slice(0, 1);
     console.log('sliced', sliced);

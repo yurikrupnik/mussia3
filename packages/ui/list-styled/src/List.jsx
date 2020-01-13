@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from '@krupnik/button';
+import Button from '@mussia/button';
 import Select from 'react-select';
 
 // import styles from './style.css';
