@@ -1,6 +1,6 @@
 {
   "name": "func1",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "main": "dist/index.js",
   "engines": {
     "node": "10"
@@ -34,8 +34,8 @@
   },
   "dependencies": {
     "@google-cloud/translate": "^5.1.2",
-    "@mussia/button": "^1.0.0",
-    "@mussia/render": "^1.0.0",
+    "@mussia/button": "^2.0.0",
+    "@mussia/render": "^2.0.0",
     "axios": "^0.19.1",
     "morgan": "^1.9.1",
     "node-fetch": "^2.6.0",

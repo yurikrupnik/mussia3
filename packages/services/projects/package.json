@@ -1,6 +1,6 @@
 {
   "name": "@mussia/projects",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "> TODO: description",
   "author": "yurikrupnik <krupnik.yuri@gmail.com>",
   "homepage": "https://github.com/yurikrupnik/mussia3/tree/master/packages/projects#readme",
@@ -39,7 +39,7 @@
     "url": "https://github.com/yurikrupnik/mussia3/issues"
   },
   "dependencies": {
-    "@mussia/express-responses": "^1.0.0",
+    "@mussia/express-responses": "^2.0.0",
     "axios": "^0.19.1",
     "connect-mongo": "^3.0.0",
     "cors": "^2.8.5",

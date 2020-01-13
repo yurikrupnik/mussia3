@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 2.0.0 (2020-01-13)
+
+**Note:** Version bump only for package @mussia/screen1
+
+
+
+
+
 # [83.0.0](https://github.com/yurikrupniktools/client-apps/compare/@krupnik/screen1@82.0.0...@krupnik/screen1@83.0.0) (2020-01-12)
 
 **Note:** Version bump only for package @krupnik/screen1

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 2.0.0 (2020-01-13)
+
+**Note:** Version bump only for package @mussia/users
+
+
+
+
+
 # [73.0.0](https://github.com/yurikrupniktools/client-apps/compare/@krupnik/service1@72.0.0...@krupnik/service1@73.0.0) (2020-01-12)
 
 **Note:** Version bump only for package @krupnik/service1
