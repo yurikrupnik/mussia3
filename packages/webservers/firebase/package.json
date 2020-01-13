@@ -36,7 +36,7 @@
     "e2e0": "jest e2e --colors",
     "serve": "firebase serve -p $npm_package_config_port",
     "predeploy": "npm run build",
-    "deploy": "firebase deploy"
+    "deploy": "firebase deploy --token $FIREBASE_TOKEN"
   },
   "bugs": {
     "url": "https://github.com/yurikrupnik/mussia3/issues"
