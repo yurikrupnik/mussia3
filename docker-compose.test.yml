@@ -6,7 +6,7 @@ services:
       - 27017:27017
 
   gateway1:
-    image: yurikrupnik/client-apps_gateway1
+    image: yurikrupnik/mussia_gateway1
     build:
       context: packages/gateways/gateway1
     container_name: gateway1
@@ -20,7 +20,7 @@ services:
       - service1
       - projects
   projects:
-    image: yurikrupnik/client-apps_projects
+    image: yurikrupnik/mussia_projects
     build:
       context: packages/services/projects
     #      args:
@@ -33,7 +33,7 @@ services:
     depends_on:
       - db
   service1:
-    image: yurikrupnik/client-apps_service1
+    image: yurikrupnik/mussia_service1
     build:
       context: packages/services/service1
     #      dockerfile:
@@ -52,7 +52,7 @@ services:
     depends_on:
       - db
   webserver1:
-    image: yurikrupnik/client-apps_webserver1
+    image: yurikrupnik/mussia_webserver1
     build:
       context: packages/webservers/webserver1
     container_name: webserver1
@@ -66,7 +66,7 @@ services:
     depends_on:
       - gateway1
   webserver2:
-    image: yurikrupnik/client-apps_webserver2
+    image: yurikrupnik/mussia_webserver2
     build:
       context: packages/webservers/webserver2
     container_name: webserver2
@@ -89,7 +89,7 @@ services:
     depends_on:
       - gateway1
   e2e:
-    image: yurikrupnik/client-apps_e2e
+    image: yurikrupnik/mussia_e2e
     build:
       context: .
       dockerfile: Dockerfile.test

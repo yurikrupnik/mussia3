@@ -60,24 +60,24 @@ services:
     container_name: projects
     environment:
       - port=6002
-      - DATABASE_URL=mongodb://db2/service1
+      - DATABASE_URL=mongodb://db2/projects
     ports:
       - 6002:6002
     command: npm run start
     depends_on:
       - db2
-  service1:
+  users:
     image: yurikrupnik/client-apps_service1
     build:
-      context: packages/services/service1
+      context: packages/services/users
       args:
-        - modulePath=/packages/services/service1
+        - modulePath=/packages/services/users
     #      dockerfile:
     #      args:
     #        - HOST=0.0.0.0
-    container_name: service1
+    container_name: users
     environment:
-      - DATABASE_URL=mongodb://db/service1
+      - DATABASE_URL=mongodb://db/users
 #      - PORT=
       #      - NODE_ENV_DOCKER=true
     #      - DATABASE_URL=${users_db}
@@ -86,72 +86,34 @@ services:
     depends_on:
       - db
     command: npm run start
-  webserver1:
-    image: yurikrupnik/client-apps_webserver1
-    build:
-      context: packages/webservers/webserver1
-      args:
-        - modulePath=/packages/webservers/webserver1
-    container_name: webserver1
-    environment:
-#      - DEST_PORT=8000
-      - PORT=9000
-#      - DESTIN+ATION_HOST=http://gateway1
-    ports:
-      - 9000:9000
-    command: npm run start
-#    depends_on:
-#      - gateway1
-  webserver2:
-    image: yurikrupnik/client-apps_webserver2
-    build:
-      context: packages/webservers/webserver2
-      args:
-        - modulePath=/packages/webservers/webserver2
-    container_name: webserver2
-    environment:
-      - DEST_PORT=8000
-      - MODULE_PATH=packages/webservers/webserver2
-      - PORT=9001
-      - DESTINATION_HOST=http://gateway1
-    #      - USERS_ENDPOINT=http://localhost:7000
-    #      - for compose local
-    #      - DESTINATION_HOST=http://192.168.99.107 for compose cloud
-    #      - DOCKER_HOST=http://192.168.99.107
-    #      - HOST=http://192.168.99.107
-    #      - HOST=0.0.0.0
-    #      - host=0.0.0.0
-    #      - HOST=gateway1
-    #      - NODE_ENV_DOCKER=true
-    ports:
-      - 9001:9001
-    command: npm run start
-#    depends_on:
-#      - gateway1
-#  fire:
-#    image: yurikrupnik/client-app_fire
+#  webserver1:
+#    image: yurikrupnik/client-apps_webserver1
 #    build:
-#      context: packages/webservers/fire
+#      context: packages/webservers/webserver1
 #      args:
-#        - modulePath=/packages/webservers/fire
-#    container_name: fire
+#        - modulePath=/packages/webservers/webserver1
+#    container_name: webserver1
 #    environment:
-#      - FIREBASE_TOKEN=$FIREBASE_TOKEN
+##      - DEST_PORT=8000
+#      - PORT=9000
+##      - DESTIN+ATION_HOST=http://gateway1
 #    ports:
-#      - 9009:9009
-#      - 9010:9010
+#      - 9000:9000
 #    command: npm run start
-#  e2e:
-#    image: yurikrupnik/client-apps_e2e
+##    depends_on:
+##      - gateway1
+#  webserver2:
+#    image: yurikrupnik/client-apps_webserver2
 #    build:
-#      context: .
-#      dockerfile: Dockerfile.test
-#    container_name: e2e
+#      context: packages/webservers/webserver2
+#      args:
+#        - modulePath=/packages/webservers/webserver2
+#    container_name: webserver2
 #    environment:
 #      - DEST_PORT=8000
-#      - PORT=9000
+#      - MODULE_PATH=packages/webservers/webserver2
+#      - PORT=9001
 #      - DESTINATION_HOST=http://gateway1
-#    command: npm run e2e
-#    depends_on:
-#      - webserver1
-#      - webserver2
+#    ports:
+#      - 9001:9001
+#    command: npm run start

@@ -1,0 +1,47 @@
+{
+  "name": "@mussia/screen1",
+  "version": "1.0.0",
+  "description": "> TODO: description",
+  "author": "yurikrupnik <krupnik.yuri@gmail.com>",
+  "homepage": "https://github.com/yurikrupnik/mussia3/tree/master/packages/screen1#readme",
+  "license": "ISC",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yurikrupnik/mussia3.git"
+  },
+  "scripts": {
+    "start": "rollup --config=../../../rollup.config.js -w",
+    "prebuild": "rimraf dist",
+    "lint": "eslint src --ext .js,.jsx --color",
+    "test": "jest src --colors",
+    "build": "rollup --config=../../../rollup.config.js",
+    "patch": "npm version patch && npm publish"
+  },
+  "bugs": {
+    "url": "https://github.com/yurikrupnik/mussia3/issues"
+  },
+  "devDependencies": {
+    "@material-ui/core": "^4.7.0",
+    "@testing-library/react": "^9.3.3",
+    "prop-types": "^15.7.2",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
+    "styled-components": "^4.4.0"
+  },
+  "peerDependencies": {
+    "react": "^16.10.2",
+    "styled-components": "^4.4.0"
+  },
+  "dependencies": {
+    "@mussia/list": "^1.0.0"
+  }
+}
