@@ -13,5 +13,5 @@
 #
 runtime: nodejs12
 env: standard
-#service: webserver1
+service: default
 #instance_class: F2
