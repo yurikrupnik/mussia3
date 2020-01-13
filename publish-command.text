@@ -1,1 +1,1 @@
- --scope @mussia/list-styled --scope @mussia/list --scope @mussia/screen1 --scope firebase --scope webserver1 --scope webserver2
+ --scope firebase
