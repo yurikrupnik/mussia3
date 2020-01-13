@@ -39,6 +39,7 @@ const List = (props) => {
                 options={options}
             />
             {
+                // eslint-disable-next-line
                 data.map((v) => (<Item key={v._id} item={v} />))
             }
             <div>
