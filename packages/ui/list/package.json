@@ -1,6 +1,6 @@
 {
   "name": "@mussia/list",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "> TODO: description",
   "author": "yurikrupnik <krupnik.yuri@gmail.com>",
   "homepage": "https://github.com/yurikrupnik/mussia3/tree/master/packages/list#readme",
@@ -47,7 +47,7 @@
     "react": "^16.10.2"
   },
   "dependencies": {
-    "@mussia/button": "^2.0.0",
+    "@mussia/button": "^2.1.0",
     "react-select": "^3.0.8"
   }
 }
