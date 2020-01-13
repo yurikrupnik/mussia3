@@ -9,6 +9,7 @@ import 'firebase/firestore'; // eslint-disable-line
 import 'firebase/storage'; // eslint-disable-line
 
 // import firebase, {collection} from 'firebase/firestore';
+
 import 'firebase/auth';
 import { Formik, Field, Form } from 'formik';
 import request from 'axios';
