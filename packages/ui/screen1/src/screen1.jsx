@@ -1,5 +1,5 @@
 import React from 'react';
-import List from '@krupnik/list';
+import List from '@mussia/list';
 // import ButtonList from '@krupnik/button-group';
 
 const Screen1 = () => (
