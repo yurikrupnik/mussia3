@@ -1,6 +1,6 @@
 const Supertest = require('supertest');
 
-const supertest = Supertest(process.env.BASE_URL || 'https://europe-west1-client-apps-monorepo.cloudfunctions.net/func1');
+const supertest = Supertest(process.env.BASE_URL || 'https://europe-west1-mussia3.cloudfunctions.net/func1');
 
 describe('system tests', () => {
     it('func1 should return something', async () => {

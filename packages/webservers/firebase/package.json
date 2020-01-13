@@ -35,6 +35,7 @@
     "build:server": "webpack --config=webpack.config.server.js --env.prod --color",
     "e2e0": "jest e2e --colors",
     "serve": "firebase serve -p $npm_package_config_port",
+    "predeploy": "npm run build",
     "deploy": "firebase deploy --token $FIREBASE_TOKEN"
   },
   "bugs": {
