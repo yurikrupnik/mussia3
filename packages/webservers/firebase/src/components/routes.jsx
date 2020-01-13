@@ -1,8 +1,8 @@
 // import Shows from './Shows';
 import Login from './Login';
 import Projects from './Projects';
-import Users from './Users';
-import usersRoute from '../services/users';
+// import Users from './Users';
+// import usersRoute from '../services/users';
 
 const routes = [
     {

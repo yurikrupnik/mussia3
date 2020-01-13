@@ -97,7 +97,7 @@ route.post('/login', (req, res) => {
         //         .signInWithEmailAndPassword(req.body.email, req.body.password);
         // })
         .then((user) => { // https://firebase.google.com/docs/reference/js/firebase.User
-            console.log('user', user);
+            console.log('user', user); // eslint-disable-line
             res.json(user);
             // let uid = user.uid;
             //
@@ -115,7 +115,7 @@ route.post('/login', (req, res) => {
             //     .signOut(); //clears session from memory
         })
         .catch((err) => {
-            console.log('error', err);
+            console.log('error', err);  // eslint-disable-line
             res.send(err);
         });
 });
@@ -142,15 +142,15 @@ webServer.use(render(App, routes));
 // console.log('auth', auth);
 
 const shit = https.onCall((data, context) => {
-    console.log(data);
-    console.log(context);
+    console.log(data); // eslint-disable-line
+    console.log(context); // eslint-disable-line
     return data;
 });
 const api = https.onRequest(app);
 const ssr = https.onRequest(webServer);
 const sendWelcomeEmail = auth.user()
     .onCreate((user) => {
-        console.log('sendWelcomeEmail user', user);
+        console.log('sendWelcomeEmail user', user); // eslint-disable-line
         // ...
     });
 export {

@@ -5,11 +5,11 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import firebase from 'firebase/app';
-import firestore from 'firebase/firestore'; // eslint-disable-line
-import a from 'firebase/storage'; // eslint-disable-line
+import 'firebase/firestore'; // eslint-disable-line
+import 'firebase/storage'; // eslint-disable-line
 
 // import firebase, {collection} from 'firebase/firestore';
-import auth from 'firebase/auth';
+import 'firebase/auth';
 import { Formik, Field, Form } from 'formik';
 import request from 'axios';
 import { Input } from '@material-ui/core';
