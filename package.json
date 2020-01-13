@@ -1,0 +1,135 @@
+{
+  "name": "mussia3",
+  "version": "1.0.0",
+  ",description": "My app from client-app",
+  "main": "index.js",
+  "scripts": {
+    "since": "lerna run test --since",
+    "bootstrap": "lerna bootstrap -- --production --no-optional",
+    "pi": "lerna exec --parallel -- npm i",
+    "start:mongo": "docker run --rm -d -p 27017:27017 --name mongo mongo",
+    "prepare:ejs": "lerna run build:client && lerna --scope=firebase run build:server ",
+    "fucntion": "lerna run fucntion",
+    "start": "lerna run --parallel start",
+    "prebuild": "lerna exec -- rimraf dist functions",
+    "build": "lerna run --parallel build",
+    "lint": "lerna run --parallel lint",
+    "build:image": "lerna run --parallel build:image",
+    "test": "lerna run --stream test -- -- -- -i",
+    "npm-publish": "bash scripts/npm-publish.sh",
+    "compose:dev:up": "docker-compose -f docker-compose.dev.yml up -d",
+    "compose:dev:down": "docker-compose -f docker-compose.dev.yml down",
+    "compose:prod:up": "docker-compose up -d",
+    "compose:prod:build": "docker-compose build",
+    "compose:prod:down": "docker-compose down",
+    "storybook": "start-storybook -p 6001",
+    "prebuild-storybook": "rimraf .storybook/dist",
+    "build-storybook": "build-storybook -o .storybook/dist",
+    "docker:local": "lerna run --parallel docker:local",
+    "e2e": "lerna run --stream e2e",
+    "deploy:docker:single-host": "bash scripts/deployments/local-docker-swarm.sh",
+    "deploy": "lerna run --parallel deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yurikrupnik/mussia3.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yurikrupnik/mussia3/issues"
+  },
+  "homepage": "https://github.com/yurikrupnik/mussia3#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.8.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.8.0",
+    "@babel/preset-env": "^7.8.0",
+    "@babel/preset-react": "^7.8.0",
+    "@loadable/webpack-plugin": "^5.12.0",
+    "@storybook/react": "^5.3.1",
+    "autoprefixer": "^9.7.3",
+    "babel-eslint": "^10.0.3",
+    "babel-loader": "^8.0.6",
+    "chalk": "^3.0.0",
+    "copy-webpack-plugin": "^5.1.1",
+    "css-hot-loader": "^1.4.4",
+    "css-loader": "^3.4.2",
+    "docdash": "^1.1.1",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-loader": "^3.0.3",
+    "eslint-plugin-import": "^2.20.0",
+    "eslint-plugin-jsdoc": "^20.3.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.17.0",
+    "generate-json-webpack-plugin": "^0.3.1",
+    "html-webpack-plugin": "^3.2.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^24.9.0",
+    "jest-runner-eslint": "^0.7.5",
+    "jsdoc": "^3.6.3",
+    "jsdoc-webpack-plugin-v2": "^2.0.2",
+    "lerna": "^3.20.2",
+    "lerna-update-wizard": "^0.17.7",
+    "less": "^3.10.3",
+    "less-loader": "^5.0.0",
+    "lodash": "^4.17.15",
+    "mini-css-extract-plugin": "^0.9.0",
+    "node-sass": "^4.13.0",
+    "nodemon-webpack-plugin": "^4.2.2",
+    "npm-run-all": "^4.1.5",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "postcss-loader": "^3.0.0",
+    "postcss-plugin": "^1.0.0",
+    "prettier": "^1.19.1",
+    "puppeteer": "^2.0.0",
+    "raw-loader": "^4.0.0",
+    "rollup": "^1.29.0",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-copy": "^3.1.0",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-peer-deps-external": "^2.2.0",
+    "rollup-plugin-postcss": "^2.0.3",
+    "sass": "^1.24.4",
+    "sass-loader": "^8.0.1",
+    "style-loader": "^1.1.2",
+    "swagger-jsdoc-webpack-plugin": "^1.0.0",
+    "terser-webpack-plugin": "^2.3.2",
+    "webpack": "^4.41.5",
+    "webpack-bundle-analyzer": "^3.6.0",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.1",
+    "webpack-node-externals": "^1.7.2",
+    "webpack-stats-plugin": "^0.3.1"
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "e2e"
+    ],
+    "moduleNameMapper": {
+      "\\.(css|less|scss)$": "identity-obj-proxy"
+    }
+  },
+  "postcss": {
+    "map": false,
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "prettier": {
+    "singleQuote": true,
+    "arrowParens": "always",
+    "printWidth": 100,
+    "tabWidth": 4
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "post-checkout": "npm run pi"
+    }
+  }
+}

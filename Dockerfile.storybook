@@ -1,0 +1,9 @@
+FROM yurikrupnik/client-apps_lerna AS builder
+COPY ./packages ./packages
+RUN npm run build-storybook
+
+FROM node:12-alpine
+COPY --from=builder /app/.storybook/dist ./dist
+CMD npx http-server -p 6001 dist
+
+EXPOSE 6001

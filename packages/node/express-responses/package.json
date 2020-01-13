@@ -1,0 +1,38 @@
+{
+  "name": "@mussia/express-responses",
+  "version": "1.0.0",
+  "description": "> TODO: description",
+  "author": "yurikrupnik <krupnik.yuri@gmail.com>",
+  "homepage": "https://github.com/yurikrupnik/mussia3/tree/master/packages/express-responses#readme",
+  "license": "ISC",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yurikrupnik/mussia3.git"
+  },
+  "scripts": {
+    "start": "rollup --config=../../../rollup.config.js -w",
+    "prebuild": "rimraf dist",
+    "lint": "eslint src --ext .js,.jsx --color",
+    "test": "jest src --colors",
+    "build": "rollup --config=../../../rollup.config.js",
+    "patch": "npm version patch && npm publish"
+  },
+  "bugs": {
+    "url": "https://github.com/yurikrupnik/mussia3/issues"
+  },
+  "devDependencies": {
+    "mongoose": "^5.8.7"
+  },
+  "peerDependencies": {
+    "mongoose": "^5.8.7"
+  }
+}

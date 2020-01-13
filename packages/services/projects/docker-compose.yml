@@ -1,0 +1,106 @@
+version: '3'
+
+services:
+  db:
+    image: mongo
+    ports:
+      - 27017:27017
+
+#  lerna:
+##    image: yurikrupnik/client-apps_lerna
+#    build:
+#      context: .
+#    container_name: lerna
+##    environment:
+##      - NODE_ENV_DOCKER=true
+##      - DATABASE_URL=mongodb://db/service1-db
+#    deploy:
+#      replicas: 0
+##
+##
+#  gateway1:
+#    image: yurikrupnik/client-apps_gateway1
+#    build:
+#      context: packages/gateway1
+#      args:
+#        - port=8000
+#    container_name: gateway1
+#    environment:
+#      - PORT=8000
+##      - NODE_ENV_DOCKER=true
+#      - DATABASE_URL=mongodb://db/service1-db
+#      - DEST_PORT=8000
+#      - HOST=http://service1
+#    command: npm run start
+#    depends_on:
+#      - db
+#      - lerna
+#    ports:
+#      - 8000:8000
+#    deploy:
+#      replicas: 1
+##
+  projects:
+#    image: yurikrupnik/client-apps_service1
+    build:
+      context: .
+#      dockerfile: docker-compose.yml
+#      args:
+#        - port=7000
+#        - NODE_ENV_DOCKER=true
+#        - DATABASE_URL=mongodb://db/service1-db
+#        - HOST=0.0.0.0
+    container_name: projects
+    environment:
+#      - PORT=7000
+      - NODE_ENV_DOCKER=true
+      - DATABASE_URL=mongodb://db/projects-db
+    ports:
+      - 7000:7000
+#      - 8000:8000
+    command: npm run start
+    depends_on:
+      - db
+#      - lerna
+    deploy:
+      replicas: 1
+#
+#  webserver1:
+##    image: yurikrupnik/client-apps_webserver1
+#    build:
+#      context: packages/webserver1
+#      args:
+#        - port=9000
+#        - NODE_ENV_DOCKER=true
+#        - HOST=gateway1
+#    container_name: webserver1
+#    environment:
+#      - DEST_PORT=8000
+#      - HOST=gateway1
+##      - NODE_ENV_DOCKER=true
+#    ports:
+#      - 9000:9000
+#    command: npm run start
+#    depends_on:
+#      - db
+#      - lerna
+#    deploy:
+#      replicas: 1
+#      update_config:
+#        parallelism: 1
+#        delay: 10s
+#      restart_policy:
+#        condition: on-failure
+
+#  visualizer:
+##    image: dockersamples/visualizer:stable
+#    ports:
+#      - "8080:8080"
+#    volumes:
+#      - "/var/run/docker.sock:/var/run/docker.sock"
+#    deploy:
+#      placement:
+#        constraints: [node.role == manager]
+
+#networks:
+#  mynet:

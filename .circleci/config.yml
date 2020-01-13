@@ -1,0 +1,632 @@
+version: 2.1
+
+aliases:
+    - &docker
+      - image: circleci/node:12
+      - image: google/cloud-sdk
+    - &update-npm
+      run:
+          name: update-npm
+          command: sudo npm install -g npm@6
+    - &restore_cache
+      keys:
+          - v1-node-{{ arch }}-{{ .Branch }}-{{ checksum "package.json" }}
+          - v1-node-{{ arch }}-{{ .Branch }}-
+          - v1-node-{{ arch }}-
+    - &install_sub_packages
+      run:
+          name: Install sub packages
+          command: npm run pi
+    - &docker_login
+      run:
+          name: docker login
+          command: docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASS
+
+commands:
+    runbuild:
+        description: build command with since paramaters
+        parameters:
+            since:
+                type: string
+                default: 'Hello World'
+        steps:
+            - run: echo $CIRCLE_BRANCH
+            - run: echo << parameters.since >>
+    sayhello:
+        description: 'A very simple command for demonstration purposes'
+        parameters:
+            to:
+                type: string
+                default: 'Hello World'
+        steps:
+            - run: echo << parameters.to >>
+    lint:
+        description: 'Run eslint with since parameter'
+        parameters:
+            since:
+                type: string
+                default: ''
+        steps:
+            - run: npm run lint -- --<< parameters.since >>
+    handle_cache:
+        description: Restoring, installing and saving cache for npm.
+        steps:
+            - *update-npm
+            - restore_cache: *restore_cache
+            - run:
+                  name: install-npm-wee
+                  command: npm i
+            - save_cache:
+                  name: Save node_modules cache
+                  key: v1-node-{{ arch }}-{{ .Branch }}-{{ checksum "package.json" }}
+                  paths:
+                      - ./node_modules
+
+
+executors:
+    development:
+        working_directory: ~/area
+        docker:
+            - image: circleci/node:12
+    production:
+        working_directory: ~/area
+        docker: *docker
+
+defaults: &defaults
+    working_directory: ~/area
+    docker:
+        - image: circleci/node:12
+        - image: google/cloud-sdk
+
+only-deploy-tags: &only-deploy-tags
+    filters:
+        tags:
+            only: /^.*/
+        branches:
+            #      only: master
+            ignore: /.*/
+
+only-deploy-tags-with-v: &only-deploy-tags-with-v
+    filters:
+        tags:
+            only: /^v.*/
+        branches:
+            ignore: /.*/
+#      only: master
+orbs:
+    puppeteer: threetreeslight/puppeteer@0.1.2
+    #  gcp-cli: circleci/gcp-cli@1.8.3
+    gcp-cloud-run: circleci/gcp-cloud-run@1.0.2
+    gcp-gcr: circleci/gcp-gcr@0.6.1
+    cloudrun: circleci/gcp-cloud-run@1.0.0
+    gcp-cli: circleci/gcp-cli@1.8.3
+
+jobs:
+    coverage:
+        executor: development
+        steps:
+            - checkout
+            - handle_cache
+            - *install_sub_packages
+            - run:
+                  name: test with coverage
+                  command: npx jest --coverage --colors -i
+            - run:
+                  name: Upload Coverage Results
+                  command: |
+                      bash <(curl -s https://codecov.io/bash) \
+                        -n ${CIRCLE_BUILD_NUM} \
+                        -t ${CODECOV_TOKEN} \
+                        -y .codecov.yml \
+
+    dc-para:
+        <<: *defaults
+        steps:
+            - checkout
+            - setup_remote_docker
+            - *docker_login
+            - attach_workspace:
+                  at: ~/docker
+            - run:
+                  name: docker build lerna layer
+                  command: docker-compose -f docker-compose.lerna.yml build --force-rm
+            - run:
+                  name: docker build
+                  command: docker-compose build --parallel --force-rm
+            - run:
+                  name: docker images
+                  command: docker images
+            - run:
+                  name: tag gateway1
+                  command: docker tag yurikrupnik/client-apps_gateway1 yurikrupnik/client-apps_gateway1:$CIRCLE_SHA1
+            - run:
+                  name: push gateway1
+                  command: docker push yurikrupnik/client-apps_gateway1:$CIRCLE_SHA1
+
+    dc:
+        <<: *defaults
+        steps:
+            - checkout
+            - setup_remote_docker
+            #          docker_layer_caching: true
+            - *docker_login
+            - attach_workspace:
+                  at: ~/docker
+            - run:
+                  name: build projects
+                  command: docker build -t yurikrupnik/client-apps_projects:$CIRCLE_SHA1 .
+            - run:
+                  name: push
+                  command: docker push yurikrupnik/client-apps_projects:$CIRCLE_SHA1
+
+    since-docker-build-e2e:
+        <<: *defaults
+        steps:
+            - checkout
+            - handle_cache
+            - run:
+                  name: pi since
+                  command: npx lerna exec --parallel --since -- npm ci
+            - setup_remote_docker
+            - *docker_login
+            - run:
+                  name: docker images
+                  command: docker images
+            - run:
+                  name: build lerna
+                  command: docker-compose -f docker-compose.lerna.yml build  --force-rm
+            - run:
+                  name: docker build images not using docker-compose
+                  command: docker-compose build $(npx lerna changed -a -q) --parallel
+            - run:
+                  name: docker images
+                  command: docker images
+            - run:
+                  name: containers up
+                  command: docker-compose up $(npx lerna changed -a -q) -d
+            - run:
+                  name: check containers
+                  command: docker-compose ps
+            - run:
+                  name: check images
+                  command: docker-compose images
+            - run:
+                  name: DOCKER_HOST
+                  command: echo $DOCKER_HOST
+            - run:
+                  name: e2e since
+                  command: npm run e2e -- -- --since
+
+            - run:
+                  name: containers down
+                  command: docker-compose down $(npx lerna changed -a -q)
+
+    dc-e2e-all:
+        working_directory: ~/area
+        docker:
+            - image: circleci/node:12
+              environment:
+                  NODE_ENV: development
+        steps:
+            - checkout
+            - setup_remote_docker
+            - *docker_login
+            - run:
+                  name: docker images
+                  command: docker images
+            #            docker images \
+            #      - run:
+            #          name: delete rmi
+            #          command: docker rmi $(docker images -q) -f
+            - run:
+                  name: build lerna
+                  command: docker-compose -f docker-compose.lerna.yml build  --force-rm
+            - run:
+                  name: build images
+                  command: docker-compose build --force-rm --parallel
+            - restore_cache:
+                  key: dependency-cache-{{ checksum "package.json" }}
+            - run:
+                  name: Install dependencies
+                  command: |
+                      sudo apt-get update
+                      sudo apt-get install -yq gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 \
+                          libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 \
+                          libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 \
+                          libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 \
+                          ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget --fix-missing
+            - run: #STABLE
+                  name: Install Chromedriver latest version
+                  command: |
+                      sudo apt-get update
+                      sudo apt-get install lsb-release libappindicator3-1
+                      curl -L -o google-chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+                      sudo dpkg -i google-chrome.deb
+                      sudo sed -i 's|HERE/chrome"|HERE/chrome" --no-sandbox|g' /opt/google/chrome/google-chrome
+                      rm google-chrome.deb
+            - run:
+                  name: Install Headless Chrome dependencies
+                  command: |
+                      sudo apt-get install -yq \
+                      gconf-service libasound2 libatk1.0-0 libatk-bridge2.0-0 libc6 libcairo2 libcups2 libdbus-1-3 \
+                      libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 \
+                      libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 \
+                      libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates \
+                      fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget
+            - run:
+                  name: Install puppeteer with chronium
+                  command: |
+                      npm i puppeteer
+
+            - run: PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true npm i
+            - *install_sub_packages
+            - save_cache:
+                  key: dependency-cache-{{ checksum "package.json" }}
+                  paths:
+                      - ./node_modules
+
+            - run:
+                  name: docker images
+                  command: docker images
+            - run:
+                  name: docker-compose up
+                  command: docker-compose up -d
+            - run:
+                  name: docker info
+                  command: docker info
+            - run:
+                  name: docker logs e2e
+                  command: npm run e2e
+            - run:
+                  name: docker-compose down
+                  command: docker-compose down
+            - run:
+                  name: docker images
+                  command: docker images
+            #      - persist_to_workspace:
+            #          root: ~/docker
+            #          paths:
+            #            .
+            - run:
+                  name: docker images
+                  command: docker images
+            - run:
+                  name: Echo $CIRCLE_BRANCH
+                  command: echo $CIRCLE_BRANCH
+            - run:
+                  name: Echo $CIRCLE_BUILD_NUM
+                  command: echo $CIRCLE_BUILD_NUM
+            - run:
+                  name: Echo $IMAGE_NAME
+                  command: echo $IMAGE_NAME
+            - run:
+                  name: Echo $CIRCLE_TAG
+                  command: echo $CIRCLE_TAG
+            - run:
+                  name: Echo $CIRCLE_SHA1
+                  command: echo $CIRCLE_SHA1
+            - run:
+                  name: Echo $CIRCLE_PR_areaNAME
+                  command: echo $CIRCLE_PR_AREANAME
+            - run:
+                  name: Echo $CIRCLE_PR_USERNAME
+                  command: echo $CIRCLE_PR_USERNAME
+
+    publish_npm:
+        executor: development
+        parameters:
+            custom_checkout:
+                type: string
+                default: ''
+        steps:
+            - checkout
+            - run:
+                  name: Create file
+                  command: node scripts/prepare.publish.js
+            - run:
+                  name: Check the file
+                  command: |
+                      if test -s publish-command.text; then
+                        exit 0;
+                      else
+                        echo no packages to publish, stopping job
+                        circleci-agent step halt
+                      fi
+            - add_ssh_keys:
+                  fingerprints:
+                      - 'b4:56:37:ff:6e:ba:c2:c4:ae:b1:67:5f:fb:5e:d5:e8'
+            - handle_cache
+            - run:
+                  name: Authenticate with registry
+                  command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/.npmrc
+            - run:
+                  name: config email
+                  command: git config --global user.email "krupnik.yuri@gmail.com" /
+                      && git config --global user.name "yurikrupnik"
+            - run:
+                  name: publish to npm
+                  command: npm run npm-publish
+
+    all-lint_test_build:
+        executor: development
+        steps:
+            - checkout
+            - handle_cache
+            - *install_sub_packages
+            - lint
+            - run:
+                  name: test
+                  command: npx jest --coverage --colors -i
+            #          npm run test -- -- -- -i
+            - run:
+                  name: build
+                  command: npm run build
+            - run:
+                  name: Upload Coverage Results
+                  command: |
+                      bash <(curl -s https://codecov.io/bash) \
+                        -n ${CIRCLE_BUILD_NUM} \
+                        -t ${CODECOV_TOKEN} \
+                        -y .codecov.yml \
+
+    since-lint_test_build:
+        executor: development
+        steps:
+            - checkout
+            - handle_cache
+            - run:
+                  name: pi since
+                  command: npx lerna exec --parallel --since -- npm i
+            - lint:
+                  since: since
+            - run:
+                  name: test since
+                  command: npx lerna exec --parallel --since -- npm run test -- -i
+            - run:
+                  name: build since
+                  command: npx lerna run build --parallel --since
+
+    since-lint_test_build-docker:
+        <<: *defaults
+        steps:
+            - checkout
+            - run:
+                  name: update-npm
+                  command: sudo npm install -g npm@6
+            - restore_cache:
+                  key: dependency-cache-{{ checksum "package.json" }}
+            - run:
+                  name: install-npm-wee
+                  command: npm install
+            - save_cache:
+                  key: dependency-cache-{{ checksum "package.json" }}
+                  paths:
+                      - ./node_modules
+            - run:
+                  name: pi since
+                  command: npx lerna exec --parallel --since -- npm i
+            - setup_remote_docker
+            - run:
+                  name: docker login
+                  command: docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASS
+            - run:
+                  name: pull lerna
+                  command: docker pull yurikrupnik/client-apps_lerna
+            #      - run:
+            #          name: build lerna
+            #          command: docker-compose -f docker-compose.lerna.yml build  --force-rm
+            - run:
+                  name: docker build images not using docker-compose
+                  command: docker-compose build $(npx lerna changed -a -q) --parallel
+            - run:
+                  name: docker images
+                  command: docker images
+            - run:
+                  name: containers up
+                  command: docker-compose up $(npx lerna changed -a -q) -d
+            - run:
+                  name: check containers
+                  command: docker-compose ps
+            - run:
+                  name: check images
+                  command: docker-compose images
+            - run:
+                  name: DOCKER_HOST
+                  command: echo $DOCKER_HOST ${DOCKER_HOST}
+            - run:
+                  name: e2e since
+                  command: npm run e2e -- -- --since
+
+            - run:
+                  name: containers down
+                  command: docker-compose down $(npx lerna changed -a -q)
+
+    run-dev-docker:
+        <<: *defaults
+        steps:
+            - checkout
+            - run:
+                  name: update-npm
+                  command: sudo npm install -g npm@6
+            - restore_cache:
+                  key: dependency-cache-{{ checksum "package.json" }}
+            - run:
+                  name: install-npm-wee
+                  command: npm install
+            - save_cache:
+                  key: dependency-cache-{{ checksum "package.json" }}
+                  paths:
+                      - ./node_modules
+
+            - setup_remote_docker
+            - run:
+                  name: docker-compose up dev
+                  command: npm run compose:dev:up
+            - run:
+                  name: docker-compose down dev
+                  command: npm run compose:dev:down
+
+    run-dev-env:
+        <<: *defaults
+        steps:
+            - checkout
+            - run:
+                  name: update-npm
+                  command: sudo npm install -g npm@6
+            - restore_cache:
+                  key: dependency-cache-{{ checksum "package.json" }}
+            - run:
+                  name: install-npm-wee
+                  command: npm install
+            - save_cache:
+                  key: dependency-cache-{{ checksum "package.json" }}
+                  paths:
+                      - ./node_modules
+
+            - setup_remote_docker
+            - run:
+                  name: Run local mongod instance
+                  command: npm run start:mongo
+            - *install_sub_packages
+            - run:
+                  name: Bootstrap
+                  command: npm run bootstrap
+
+    run-prdd-all:
+        <<: *defaults
+        steps:
+            - checkout
+            - run:
+                  name: update-npm
+                  command: sudo npm install -g npm@6
+            - restore_cache:
+                  key: dependency-cache-{{ checksum "package.json" }}
+            - run:
+                  name: install-npm-wee
+                  command: npm install
+            - save_cache:
+                  key: dependency-cache-{{ checksum "package.json" }}
+                  paths:
+                      - ./node_modules
+
+            - setup_remote_docker
+            - run:
+                  name: Build lerna layer
+                  command: docker-compose -f docker-compose.lerna.yml build
+            - run:
+                  name: Build images parallel
+                  command: docker-compose build --parallel --force-rm
+            - run:
+                  name: Run images
+                  command: npm run compose:prod:up
+            - run:
+                  name: Check for running containers
+                  command: docker-compose ps
+            - run:
+                  name: Stop images
+                  command: npm run compose:prod:down
+            - run:
+                  name: deploy:docker:single-host
+                  command: npm run deploy:docker:single-host
+    since-deploy-functions-gc:
+        <<: *defaults
+        steps:
+            - checkout
+            - run:
+                  name: update-npm
+                  command: sudo npm install -g npm@6
+            - restore_cache:
+                  key: dependency-cache-{{ checksum "package.json" }}
+            - run:
+                  name: install-npm-wee
+                  command: npm ci
+            - save_cache:
+                  key: dependency-cache-{{ checksum "package.json" }}
+                  paths:
+                      - ./node_modules
+
+    gc-deploy:
+        executor: production
+        steps:
+            - checkout
+            - setup_remote_docker
+            - handle_cache
+            - *install_sub_packages
+            - run:
+                  name: Build app binary and Docker image
+                  command: |
+                      echo $GCLOUD_SERVICE_KEY | base64 --decode --ignore-garbage > $HOME/gcloud-service-key.json
+                      echo 'export GOOGLE_CLOUD_KEYS=$(cat $HOME/gcloud-service-key.json)' >> $BASH_ENV
+            - gcp-gcr/gcr-auth:
+                  gcloud-service-key: GOOGLE_CLOUD_KEYS
+                  google-project-id: GOOGLE_PROJECT_ID
+                  google-compute-zone: GOOGLE_COMPUTE_ZONE
+            - run:
+                  name: gcloud config list
+                  command: |
+                    gcloud config set functions/region europe-west1
+                    gcloud config list
+            - run:
+                  name: deploy app
+                  command: |
+                      command=$(cat publish-command.text)
+                      echo $command
+                      npx lerna run --parallel $command deploy
+    #   npx lerna run
+
+    lol:
+        executor: development
+        steps:
+            - checkout
+            - setup_remote_docker
+            - handle_cache
+            - *install_sub_packages
+            - *docker_login
+
+workflows:
+    version: 2
+
+    build:
+        jobs:
+            - all-lint_test_build:
+                filters:
+                  branches:
+                    only: master
+            - since-lint_test_build
+            - publish_npm:
+                  #          #          requires:
+                  #          #            - since-lint_test_build
+                  filters:
+                      branches:
+                          only: master
+    #                    ignore: master
+    #      - since-deploy-functions-gc:
+    #          filters:
+    #            branches:
+    #              only: master
+    #              ignore: master
+
+    deploy-with-tags:
+        jobs:
+            - coverage:
+                  <<: *only-deploy-tags-with-v
+              #          requires:
+              #            - deploy_npm
+              #            - deploys:
+              #                  <<: *only-deploy-tags-with-v
+            - gc-deploy:
+                  <<: *only-deploy-tags
+
+    nightly:
+        triggers:
+            - schedule:
+                  cron: '0 0 * * *'
+                  filters:
+                      branches:
+                          only:
+                              - master
+        jobs:
+            - run-prdd-all
+            - run-dev-docker
+            - run-dev-env
+            - all-lint_test_build

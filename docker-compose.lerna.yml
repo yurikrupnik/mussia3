@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  lerna:
+    image: yurikrupnik/client-apps_lerna
+    build:
+      context: .
+    container_name: lerna
+    deploy:
+      replicas: 0

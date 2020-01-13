@@ -1,0 +1,23 @@
+{
+  "groups": {
+    "default": {
+      "packages": [
+        "package.json",
+        "packages/docs/package.json",
+        "packages/gateways/gateway1/package.json",
+        "packages/services/service1/package.json",
+        "packages/services/projects/package.json",
+        "packages/webservers/webserver1/package.json",
+        "packages/webservers/webserver2/package.json",
+        "packages/node/render/package.json",
+        "packages/functions/func1/package.json",
+        "packages/node/express-responses/package.json",
+        "packages/ui/button/package.json",
+        "packages/ui/list/package.json",
+        "packages/ui/button-list/package.json",
+        "packages/ui/screen1/package.json"
+
+      ]
+    }
+  }
+}

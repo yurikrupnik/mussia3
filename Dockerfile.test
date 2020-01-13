@@ -1,0 +1,7 @@
+FROM yurikrupnik/client-apps_lerna AS builder
+WORKDIR /app
+COPY packages ./packages
+RUN npm run pi
+
+
+

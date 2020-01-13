@@ -1,0 +1,65 @@
+version: '3'
+
+services:
+  db:
+    image: mongo
+    ports:
+      - 27017:27017
+
+  devopment:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.dev
+    container_name: devopment
+    environment:
+      - NODE_ENV_DOCKER=true
+      - DATABASE_URL=mongodb://db/service1-db
+    ports:
+      - 3000:3000
+      - 4000:4000
+      - 5000:5000
+      - 5001:5001
+      - 5002:5002
+      - 5003:5003
+      - 6002:6002
+      - 3333:3333
+      - 3334:3334
+    volumes:
+      - ./packages:/app/packages
+    command: npm run start
+    depends_on:
+      - db
+
+#  test:
+#    build:
+#      context: .
+#      dockerfile: ./Dockerfile.test
+#    container_name: test
+#    environment:
+#      - NODE_ENV_DOCKER=true
+#      - DATABASE_URL=mongodb://db/service1-db
+#    ports:
+#      - 9999:80
+##      - 4000:4000
+##      - 5000:5000
+##      - 5001:5001
+##      - 5002:5002
+##      - 5003:5003
+##      - 6002:6002
+#    #    todo automate volumes without passing everything
+#    volumes:
+#      - ./packages:/app/packages
+#    command: npm run start
+
+#  storybook:
+#    build:
+#      context: .
+#      dockerfile: ./Dockerfile.dev
+#    container_name: storybook
+#    ports:
+#      - 6001:6001
+#    volumes:
+#      - ./packages:/app/packages
+#    command: npm run storybook
+#    depends_on:
+#      - db

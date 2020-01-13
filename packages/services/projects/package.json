@@ -1,0 +1,59 @@
+{
+  "name": "@mussia/projects",
+  "version": "1.0.0",
+  "description": "> TODO: description",
+  "author": "yurikrupnik <krupnik.yuri@gmail.com>",
+  "homepage": "https://github.com/yurikrupnik/mussia3/tree/master/packages/projects#readme",
+  "license": "ISC",
+  "main": "dist/server.js",
+  "files": [
+    "dist"
+  ],
+  "private": true,
+  "engines": {
+    "node": "12"
+  },
+  "config": {
+    "port": "7022",
+    "modulePath": "/packages/services/projects",
+    "docker_image_org_name": "client-apps_projects",
+    "project": "client-apps-monorepo",
+    "service": "projects",
+    "docker_image_name": "yurikrupnik",
+    "db": "ds263876.mlab.com:63876/client-app-projects"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yurikrupnik/mussia3.git"
+  },
+  "scripts": {
+    "start": "webpack --config=../../../webpack.config.server.js -w --color",
+    "prebuild": "rimraf dist",
+    "lint": "eslint src --color",
+    "test": "jest src --colors",
+    "build": "webpack --config=../../../webpack.config.server.js --env.prod --color",
+    "predeploy": "npm run build",
+    "deploy": "bash ../../../scripts/deploy-to-cloud-run.sh"
+  },
+  "bugs": {
+    "url": "https://github.com/yurikrupnik/mussia3/issues"
+  },
+  "dependencies": {
+    "@mussia/express-responses": "^1.0.0",
+    "axios": "^0.19.1",
+    "connect-mongo": "^3.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-session": "^1.16.1",
+    "express-status-monitor": "^1.2.5",
+    "helmet": "^3.21.2",
+    "mongoose": "^5.8.7",
+    "morgan": "^1.9.1",
+    "socket.io": "^2.2.0",
+    "socket.io-client": "^2.2.0",
+    "swagger-ui-express": "^4.1.0"
+  },
+  "devDependencies": {
+    "moxios": "^0.4.0"
+  }
+}

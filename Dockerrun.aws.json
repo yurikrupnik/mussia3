@@ -1,0 +1,32 @@
+
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "webserver1",
+      "image": "yurikrupnik/client-apps_webserver1",
+      "essential": true,
+      "memory": 128,
+      "portMappings": [
+        {
+          "hostPort": 9000,
+          "containerPort": 9000
+        }
+      ],
+      "Command": "npm start"
+    },
+    {
+      "name": "webserver2",
+      "image": "yurikrupnik/client-apps_webserver2",
+      "essential": true,
+      "memory": 128,
+      "portMappings": [
+        {
+          "hostPort": 9001,
+          "containerPort": 9001
+        }
+      ],
+      "Command": "npm start"
+    }
+  ]
+}

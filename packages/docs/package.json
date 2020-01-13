@@ -1,0 +1,68 @@
+{
+  "name": "@mussia/fe-docs",
+  "version": "1.0.0",
+  "description": "> TODO: description",
+  "author": "yurikrupnik <krupnik.yuri@gmail.com>",
+  "homepage": "https://github.com/yurikrupnik/mussia3/tree/master/packages/docs#readme",
+  "license": "ISC",
+  "main": "dist/server.js",
+  "files": [
+    "dist"
+  ],
+  "private": true,
+  "engines": {
+    "node": "12.10.0"
+  },
+  "config": {
+    "port": "6002",
+    "modulePath": "/packages/services/service1",
+    "docker_image_org_name": "client-apps_docs",
+    "docker_image_name": "yurikrupnik"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yurikrupnik/mussia3.git"
+  },
+  "scripts": {
+    "start": "run-p start:styleguide start:client start:server",
+    "start:server": "webpack --config=../../webpack.config.server.js -w --color",
+    "start:client": "webpack-dev-server --config=../../webpack.config.client.js --color",
+    "start:styleguide": "styleguidist server --open --config=styleguide.config.js",
+    "prebuild": "rimraf dist",
+    "lint": "eslint src --ext .js,.jsx --color",
+    "test": "jest src --colors",
+    "build": "run-p build:client build:server",
+    "build:client": "webpack --config=../../webpack.config.client.js --env.prod --color",
+    "build:server": "webpack --config=../../webpack.config.server.js --env.prod --color",
+    "build:styleguide": "styleguidist build --config=styleguide.config.js"
+  },
+  "bugs": {
+    "url": "https://github.com/yurikrupnik/mussia3/issues"
+  },
+  "dependencies": {
+    "@krupnik/render": "^60.0.0",
+    "@material-ui/core": "^4.7.0",
+    "axios": "^0.19.1",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "helmet": "^3.21.2",
+    "morgan": "^1.9.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
+    "react-loadable": "^5.5.0",
+    "react-router": "^5.0.1",
+    "react-router-dom": "^5.0.1",
+    "swagger-ui-express": "^4.1.0"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^9.3.3",
+    "lodash.reduce": "^4.6.0",
+    "react-styleguidist": "^10.3.2"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(css|less|scss)$": "identity-obj-proxy"
+    }
+  }
+}

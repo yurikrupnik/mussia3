@@ -1,0 +1,6 @@
+FROM yurikrupnik/client-apps_lerna
+
+COPY packages ./packages
+RUN npm run pi
+RUN npm run prepare:ejs
+RUN npm run bootstrap
