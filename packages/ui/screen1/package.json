@@ -1,6 +1,6 @@
 {
   "name": "@mussia/screen1",
-  "version": "3.2.0",
+  "version": "3.3.0",
   "description": "> TODO: description",
   "author": "yurikrupnik <krupnik.yuri@gmail.com>",
   "homepage": "https://github.com/yurikrupnik/mussia3/tree/master/packages/screen1#readme",
@@ -42,6 +42,6 @@
     "styled-components": "^4.4.0"
   },
   "dependencies": {
-    "@mussia/list": "^3.2.0"
+    "@mussia/list": "^3.3.0"
   }
 }
