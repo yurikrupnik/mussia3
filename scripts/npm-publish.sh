@@ -17,8 +17,8 @@ git add -u
 git diff --quiet && git diff --staged --quiet || git commit -am "package-lock.json update"
 git status
 npm version patch
-git push origin --follow-tags
+#git push origin --follow-tags
 ###  # tag
   git status
-git tag "$(node -p "require('./package.json').version")" -a -m "$(node -p "require('./package.json').version")"
+git tag -a "$(node -p "require('./package.json').version")" -m "$(node -p "require('./package.json').version")"
 git push origin --follow-tags
