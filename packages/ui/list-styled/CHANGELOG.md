@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.1](https://github.com/yurikrupnik/mussia3/compare/@mussia/list-styled@4.0.0...@mussia/list-styled@4.0.1) (2020-01-14)
+
+**Note:** Version bump only for package @mussia/list-styled
+
+
+
+
+
 # [4.0.0](https://github.com/yurikrupnik/mussia3/compare/@mussia/list-styled@3.5.0...@mussia/list-styled@4.0.0) (2020-01-13)
 
 **Note:** Version bump only for package @mussia/list-styled
