@@ -10,7 +10,7 @@ import './styles/_index.scss';
 const theme = {
     palette: {
         primary: {
-            main: '#dc5f4a'
+            main: '#9fdcba'
         },
         shit: {
             main: '#b43fdc'
