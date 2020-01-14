@@ -5,7 +5,7 @@ COPY package-lock.json package.json ./
 RUN npm install
 RUN echo $PWD
 
-COPY .storybook ./.storybook
+#COPY .storybook ./.storybook
 COPY docs ./docs
 COPY babel.config.js .
 COPY .eslintrc.js .
