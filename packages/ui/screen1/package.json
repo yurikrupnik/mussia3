@@ -43,5 +43,6 @@
   },
   "dependencies": {
     "@mussia/list": "^4.0.2"
-  }
+  },
+  "gitHead": "1800f9c7794bc75b7f6f0c0760033e74fa408b6c"
 }

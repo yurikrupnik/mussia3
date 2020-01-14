@@ -49,5 +49,6 @@
   "dependencies": {
     "@mussia/button": "^3.0.2",
     "react-select": "^3.0.8"
-  }
+  },
+  "gitHead": "1800f9c7794bc75b7f6f0c0760033e74fa408b6c"
 }
