@@ -1,6 +1,6 @@
 {
   "name": "mussia3",
-  "version": "4.0.0-0",
+  "version": "5.0.0-0",
   ",description": "My app from client-app",
   "main": "index.js",
   "scripts": {
