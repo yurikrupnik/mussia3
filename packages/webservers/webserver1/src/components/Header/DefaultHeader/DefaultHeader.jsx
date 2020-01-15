@@ -53,14 +53,8 @@ const DefaultHeader = (props) => {
                     <IconButton onClick={toggleOpen} edge="start" color="inherit" aria-label="menu">
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h6">
-                        default
-                    </Typography>
-                    <Button
-                        color="inherit"
-                        onClick={() => {
-                        }}
-                    >
+                    <Typography variant="h6">default</Typography>
+                    <Button color="inherit" onClick={() => {}}>
                         Login
                     </Button>
                 </Toolbar>
@@ -68,28 +62,22 @@ const DefaultHeader = (props) => {
             <Drawer open={open} onClose={toggleOpen}>
                 <div
                     style={{
-                        width: '400px'
+                        width: '420px'
                     }}
                 >
-                    <div>
-                        logo
-                    </div>
-                    {
-                        regularRoutes.map((item) => (
-                            <div
-                                key={item.label}
+                    <div>logo</div>
+                    {regularRoutes.map((item) => (
+                        <div key={item.label}>
+                            <NavLink
+                                to={item.url}
+                                onClick={toggleOpen}
+                                // className={styles.navLink}
+                                // activeClassName={styles.active}
                             >
-                                <NavLink
-                                    to={item.url}
-                                    onClick={toggleOpen}
-                                    // className={styles.navLink}
-                                    // activeClassName={styles.active}
-                                >
-                                    {item.label}
-                                </NavLink>
-                            </div>
-                        ))
-                    }
+                                {item.label}
+                            </NavLink>
+                        </div>
+                    ))}
                 </div>
             </Drawer>
         </div>
