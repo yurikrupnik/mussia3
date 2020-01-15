@@ -589,9 +589,6 @@ jobs:
                         echo no packages to publish, stopping job
                         circleci-agent step halt
                       fi
-            #            - add_ssh_keys:
-            #                  fingerprints:
-            #                      - 'b4:56:37:ff:6e:ba:c2:c4:ae:b1:67:5f:fb:5e:d5:e8'
             - handle_cache
             - run:
                   name: Authenticate with registry
