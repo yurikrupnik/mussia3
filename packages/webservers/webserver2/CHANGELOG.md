@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.0.0-shit.0](https://github.com/yurikrupnik/mussia3/compare/webserver2@6.0.0-shit.0...webserver2@7.0.0-shit.0) (2020-01-15)
+
+**Note:** Version bump only for package webserver2
+
+
+
+
+
 # [6.0.0-shit.0](https://github.com/yurikrupnik/mussia3/compare/webserver2@5.0.1...webserver2@6.0.0-shit.0) (2020-01-15)
 
 **Note:** Version bump only for package webserver2

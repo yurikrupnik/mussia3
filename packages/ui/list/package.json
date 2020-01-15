@@ -1,6 +1,6 @@
 {
   "name": "@mussia/list",
-  "version": "7.0.0-shit.0",
+  "version": "8.0.0-shit.0",
   "description": "> TODO: description",
   "author": "yurikrupnik <krupnik.yuri@gmail.com>",
   "homepage": "https://github.com/yurikrupnik/mussia3/tree/master/packages/list#readme",
@@ -47,7 +47,7 @@
     "react": "^16.10.2"
   },
   "dependencies": {
-    "@mussia/button": "^6.0.0-shit.0",
+    "@mussia/button": "^7.0.0-shit.0",
     "react-select": "^3.0.8"
   },
   "gitHead": "1800f9c7794bc75b7f6f0c0760033e74fa408b6c"

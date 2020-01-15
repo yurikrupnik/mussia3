@@ -1,6 +1,6 @@
 {
   "name": "@mussia/screen1",
-  "version": "7.0.0-shit.0",
+  "version": "8.0.0-shit.0",
   "description": "> TODO: description",
   "author": "yurikrupnik <krupnik.yuri@gmail.com>",
   "homepage": "https://github.com/yurikrupnik/mussia3/tree/master/packages/screen1#readme",
@@ -42,7 +42,7 @@
     "styled-components": "^4.4.0"
   },
   "dependencies": {
-    "@mussia/list": "^7.0.0-shit.0"
+    "@mussia/list": "^8.0.0-shit.0"
   },
   "gitHead": "1800f9c7794bc75b7f6f0c0760033e74fa408b6c"
 }
