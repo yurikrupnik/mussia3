@@ -1,6 +1,6 @@
 {
   "name": "webserver2",
-  "version": "5.0.1",
+  "version": "6.0.0-shit.0",
   "description": "> TODO: description",
   "author": "yurikrupnik <krupnik.yuri@gmail.com>",
   "homepage": "https://github.com/yurikrupnik/mussia3/tree/master/packages/webservers/webserver2#readme",
@@ -47,11 +47,11 @@
   },
   "dependencies": {
     "@material-ui/core": "^4.7.0",
-    "@mussia/button": "^5.0.1",
-    "@mussia/button-list": "^6.0.1",
-    "@mussia/list": "^6.0.1",
+    "@mussia/button": "^6.0.0-shit.0",
+    "@mussia/button-list": "^7.0.0-shit.0",
+    "@mussia/list": "^7.0.0-shit.0",
     "@mussia/render": "^2.0.0",
-    "@mussia/screen1": "^6.0.1",
+    "@mussia/screen1": "^7.0.0-shit.0",
     "axios": "^0.19.1",
     "cors": "^2.8.5",
     "custom-react": "^3.0.1",

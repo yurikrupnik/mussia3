@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.0.0-shit.0](https://github.com/yurikrupnik/mussia3/compare/@mussia/list@6.0.1...@mussia/list@7.0.0-shit.0) (2020-01-15)
+
+**Note:** Version bump only for package @mussia/list
+
+
+
+
+
 ## [6.0.1](https://github.com/yurikrupnik/mussia3/compare/@mussia/list@6.0.0...@mussia/list@6.0.1) (2020-01-15)
 
 **Note:** Version bump only for package @mussia/list
