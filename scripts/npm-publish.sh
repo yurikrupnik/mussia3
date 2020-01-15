@@ -20,5 +20,5 @@ npm version patch
 git push origin --follow-tags
 ###  # tag
 #  git status
-#git tag -a "$(node -p "require('./package.json').version")" -m "taf for $(node -p "require('./package.json').version")"
-#git push origin --follow-tags
+git tag -a "$(node -p "require('./package.json').version")" -m "taf for $(node -p "require('./package.json').version")"
+git push origin --follow-tags
