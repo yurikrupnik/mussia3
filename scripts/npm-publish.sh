@@ -11,7 +11,7 @@ git status
 npx lerna exec --stream --since -- npm i
 npx lerna run --parallel build --since
 npx lerna publish patch --yes --no-push --conventional-commits
-npx lerna exec --since -- npm install --package-lock-only --ignore-scripts --no-audit
+npx lerna exec -- npm install --package-lock-only --ignore-scripts --no-audit
   git status
 git add -u
 git diff --quiet && git diff --staged --quiet || git commit -am "package-lock.json update"
