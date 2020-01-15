@@ -12,8 +12,6 @@ import MenuIcon from '@material-ui/icons/Menu';
 // import FormControl from '@material-ui/core/FormControl';
 // import Select from '@material-ui/core/Select';
 
-// import Header from "../Header";
-// import Badge from '@material-ui/core/Badge';
 const regularRoutes = [
     {
         label: 'dashboard',
@@ -38,11 +36,8 @@ const regularRoutes = [
 ];
 
 const DefaultHeader = (props) => {
-    // const { regularRoutes, toggleOpen, open } = props;
     const { location } = props;
     const { pathname } = location;
-    // console.log(props)
-    // console.log(pathname.includes('dashboard'))
     if (pathname.includes('dashboard')) {
         return null;
     }
@@ -73,7 +68,7 @@ const DefaultHeader = (props) => {
             <Drawer open={open} onClose={toggleOpen}>
                 <div
                     style={{
-                        width: '400px'
+                        width: '420px'
                     }}
                 >
                     <div>
