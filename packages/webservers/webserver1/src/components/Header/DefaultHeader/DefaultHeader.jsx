@@ -68,7 +68,7 @@ const DefaultHeader = (props) => {
             <Drawer open={open} onClose={toggleOpen}>
                 <div
                     style={{
-                        width: '420px'
+                        width: '400px'
                     }}
                 >
                     <div>
