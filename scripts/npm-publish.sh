@@ -14,7 +14,7 @@ npx lerna publish patch --yes --no-push --conventional-commits
 npx lerna exec --since -- npm install --package-lock-only --ignore-scripts --no-audit
   git status
 git add -u
-git diff --quiet && git diff --staged --quiet || git commit -am "package-lock.json update"
+git diff --quiet && git diff --staged --quiet && git commit -am "package-lock.json update"
 git status
 npm version patch
 git push origin --follow-tags
