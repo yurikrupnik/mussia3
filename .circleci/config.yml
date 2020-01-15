@@ -62,7 +62,6 @@ commands:
                   paths:
                       - ./node_modules
 
-
 executors:
     development:
         working_directory: ~/area
@@ -332,9 +331,9 @@ jobs:
                         echo no packages to publish, stopping job
                         circleci-agent step halt
                       fi
-#            - add_ssh_keys:
-#                  fingerprints:
-#                      - 'b4:56:37:ff:6e:ba:c2:c4:ae:b1:67:5f:fb:5e:d5:e8'
+            #            - add_ssh_keys:
+            #                  fingerprints:
+            #                      - 'b4:56:37:ff:6e:ba:c2:c4:ae:b1:67:5f:fb:5e:d5:e8'
             - handle_cache
             - run:
                   name: Authenticate with registry
@@ -564,8 +563,8 @@ jobs:
             - run:
                   name: gcloud config list
                   command: |
-                    gcloud config set functions/region europe-west1
-                    gcloud config list
+                      gcloud config set functions/region europe-west1
+                      gcloud config list
             - run:
                   name: deploy app
                   command: |
@@ -583,15 +582,62 @@ jobs:
             - *install_sub_packages
             - *docker_login
 
+    publish_branch:
+        executor: development
+        steps:
+            - checkout
+            - run:
+                  name: Create file
+                  command: node scripts/prepare.publish.js
+            - run:
+                  name: Check the file
+                  command: |
+                      if test -s publish-command.text; then
+                        exit 0;
+                      else
+                        echo no packages to publish, stopping job
+                        circleci-agent step halt
+                      fi
+            - handle_cache
+            - run:
+                  name: Authenticate with registry
+                  command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/.npmrc
+            - run:
+                  name: config email
+                  command: git config --global user.email "krupnik.yuri@gmail.com" /
+                      && git config --global user.name "yurikrupnik"
+            - run:
+                  name: git add publish-command.text .
+                  command: git add publish-command.text .
+            - run:
+                  name: git diff --quiet && git diff --staged --quiet || git commit -m "edit publish-command.text file"
+                  command: git diff --quiet && git diff --staged --quiet || git commit -m "edit publish-command.text file"
+
+            - run:
+                  name: cat publish-command.text
+                  command: |
+                      cat publish-command.text
+                      npx lerna exec --stream --since -- npm i
+                      npx lerna run --parallel build --since
+                      npx lerna publish premajor --yes --no-push --conventional-commits --preid $CIRCLE_BRANCH --dist-tag $CIRCLE_BRANCH
+                      npx lerna exec -- npm install --package-lock-only --ignore-scripts --no-audit
+                      git add -u
+                      git diff --quiet && git diff --staged --quiet || git commit -am "package-lock.json update"
+                      npm version premajor
+                      git push --set-upstream origin $CIRCLE_BRANCH --follow-tags
 workflows:
     version: 2
 
     build:
         jobs:
+            - publish_branch:
+                  filters:
+                      branches:
+                          ignore: master
             - all-lint_test_build:
-                filters:
-                  branches:
-                    only: master
+                  filters:
+                      branches:
+                          only: master
             - since-lint_test_build
             - publish_npm:
                   #          #          requires:
