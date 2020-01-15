@@ -4,7 +4,7 @@ set -eo pipefail
 echo $npm_package_version
 
 git add publish-command.text .
-git diff --quiet && git diff --staged --quiet && git commit -m "edit publish-command.text file"
+git diff --quiet && git diff --staged --quiet || git commit -m "edit publish-command.text file"
 cat publish-command.text
 git status
 
@@ -14,7 +14,7 @@ npx lerna publish patch --yes --no-push --conventional-commits
 npx lerna exec --since -- npm install --package-lock-only --ignore-scripts --no-audit
   git status
 git add -u
-git diff --quiet && git diff --staged --quiet && git commit -am "package-lock.json update"
+git diff --quiet && git diff --staged --quiet || git commit -am "package-lock.json update"
 git status
 npm version patch
 git push origin --follow-tags
