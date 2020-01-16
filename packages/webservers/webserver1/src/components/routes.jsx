@@ -51,7 +51,7 @@ const routes = [
         path: '/dashboard',
         component: Screen1View,
         key: 'Screen1View',
-        exact: true
+        // exact: true
     },
     // {
     //     path: '/brands',
