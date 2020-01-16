@@ -12,9 +12,9 @@ const Stam = (props) => {
 };
 
 
-// Stam.defaultProps = {
-    // children: null
-// };
+Stam.defaultProps = {
+    children: null
+};
 
 Stam.propTypes = {
     children: PropTypes.oneOfType([

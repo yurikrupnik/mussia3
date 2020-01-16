@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import loadable from '@loadable/component';
 import List from '@mussia/list';
 import { Route } from 'react-router-dom';
+
 const Stam = loadable(() => import(/* webpackChunkName: "stam" */'./Stam'));
 const Route1 = loadable(() => import(/* webpackChunkName: "Route1" */'./Route1'));
 const Route2 = loadable(() => import(/* webpackChunkName: "Route2" */'./Route2'));
@@ -16,6 +17,13 @@ const Router = ({ routes }) => (
         {routes.map((route) => <Route key={route.key} {...route} />)} {/* eslint-disable-line */}
     </>
 );
+
+Router.propTypes = {
+    // children: PropTypes.element.isRequired,
+    routes: PropTypes.arrayOf(PropTypes.shape({
+        path: PropTypes.string.isRequired
+    })).isRequired
+};
 
 const routes = [
     {
@@ -38,13 +46,12 @@ const routes = [
 
 const Screen1 = (props) => {
     const { children } = props;
-    console.log('children', children);
     return (
         <div>
             <h2>
                 I am dunamic sss
             </h2>
-            <Stam/>
+            <Stam />
             <List
                 data={[
                     {
@@ -55,9 +62,14 @@ const Screen1 = (props) => {
                     }
                 ]}
             />
+            {children}
             <Router routes={routes} />
         </div>
     );
+};
+
+Screen1.defaultProps = {
+    children: null
 };
 
 Screen1.propTypes = {
