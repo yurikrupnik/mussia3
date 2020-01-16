@@ -41,12 +41,12 @@
   "peerDependencies": {
     "prop-types": "^15.7.2",
     "react": "^16.10.2",
-    "react-router-dom": "^5.1.2",
     "styled-components": "^4.4.0"
   },
   "dependencies": {
     "@loadable/component": "^5.11.0",
-    "@mussia/list": "^6.0.1"
+    "@mussia/list": "^6.0.1",
+    "react-router-dom": "^5.1.2"
   },
   "gitHead": "1800f9c7794bc75b7f6f0c0760033e74fa408b6c"
 }

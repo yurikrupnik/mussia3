@@ -1,7 +1,7 @@
 {
   "name": "mussia3",
   "version": "4.0.0",
-  ",description": "My app from client-app",
+  "description": "My app from client-app",
   "main": "index.js",
   "scripts": {
     "since": "lerna run test --since",
