@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.3](https://github.com/yurikrupnik/mussia3/compare/webserver2@5.0.2...webserver2@5.0.3) (2020-01-17)
+
+
+### Bug Fixes
+
+* **package:** update @mussia/screen1 to version 7.0.0 ([5f57d33](https://github.com/yurikrupnik/mussia3/commit/5f57d33ffa082dabaa6c4e91b3ff5ce433bcef00))
+
+
+
+
+
 ## [5.0.2](https://github.com/yurikrupnik/mussia3/compare/webserver2@5.0.1...webserver2@5.0.2) (2020-01-17)
 
 **Note:** Version bump only for package webserver2
