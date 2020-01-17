@@ -48,7 +48,7 @@ const Screen1 = (props) => {
     return (
         <div>
             <h2>
-                I am dunamic stamp
+                I am dunamic new ss
             </h2>
             <Stam />
             <List
