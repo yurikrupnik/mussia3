@@ -30,7 +30,7 @@ const routes = [
         component: Route1,
         // render: DashboardHeader,
         // exact: true,
-        key: 'a',
+        key: 'aw',
         exact: true
     },
     {
@@ -48,7 +48,7 @@ const Screen1 = (props) => {
     return (
         <div>
             <h2>
-                I am dunamic 2
+                I am dunamic 5
             </h2>
             <Stam />
             <List
