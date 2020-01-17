@@ -2,7 +2,7 @@ import React from 'react';
 
 const Route2 = () => (
     <div>
-        Route222
+        Route22
     </div>
 );
 
