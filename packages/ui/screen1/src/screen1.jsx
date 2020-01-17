@@ -7,7 +7,6 @@ import { Route } from 'react-router-dom';
 const Stam = loadable(() => import(/* webpackChunkName: "stam" */'./Stam'));
 const Route1 = loadable(() => import(/* webpackChunkName: "Route1" */'./Route1'));
 const Route2 = loadable(() => import(/* webpackChunkName: "Route2" */'./Route2'));
-// import Stam from './Stam';
 
 
 // those fail in webserver1, webpack worked but failes in server side
@@ -49,13 +48,13 @@ const Screen1 = (props) => {
     return (
         <div>
             <h2>
-                I am dunamic sss
+                I am dunamic 2
             </h2>
             <Stam />
             <List
                 data={[
                     {
-                        _id: '1'
+                        _id: '13'
                     },
                     {
                         _id: '12'
