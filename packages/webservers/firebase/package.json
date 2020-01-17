@@ -1,6 +1,6 @@
 {
   "name": "firebase",
-  "version": "4.0.2",
+  "version": "4.0.3",
   "description": "> TODO: description",
   "author": "yurikrupnik <krupnik.yuri@gmail.com>",
   "homepage": "https://github.com/yurikrupnik/mussia3/tree/master/packages/webservers/firebase#readme",
@@ -43,8 +43,8 @@
   },
   "dependencies": {
     "@material-ui/core": "^4.7.0",
-    "@mussia/button": "^5.0.2",
-    "@mussia/list": "^6.0.2",
+    "@mussia/button": "^5.0.3",
+    "@mussia/list": "^6.0.3",
     "@mussia/render": "^2.0.0",
     "axios": "^0.19.1",
     "cors": "^2.8.5",
