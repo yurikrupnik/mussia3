@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.5-one-more-fi.0](https://github.com/yurikrupnik/mussia3/compare/@mussia/list-styled@6.0.4-one-more-fi.0...@mussia/list-styled@6.0.5-one-more-fi.0) (2020-01-17)
+
+**Note:** Version bump only for package @mussia/list-styled
+
+
+
+
+
 ## [6.0.4-one-more-fi.0](https://github.com/yurikrupnik/mussia3/compare/@mussia/list-styled@6.0.3...@mussia/list-styled@6.0.4-one-more-fi.0) (2020-01-17)
 
 **Note:** Version bump only for package @mussia/list-styled
