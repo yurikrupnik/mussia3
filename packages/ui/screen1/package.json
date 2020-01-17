@@ -1,6 +1,6 @@
 {
   "name": "@mussia/screen1",
-  "version": "6.0.1",
+  "version": "6.0.2-alpha.26+576aceb",
   "description": "> TODO: description",
   "author": "yurikrupnik <krupnik.yuri@gmail.com>",
   "homepage": "https://github.com/yurikrupnik/mussia3/tree/master/packages/screen1#readme",
@@ -48,5 +48,5 @@
     "@mussia/list": "^6.0.1",
     "react-router-dom": "^5.1.2"
   },
-  "gitHead": "1800f9c7794bc75b7f6f0c0760033e74fa408b6c"
+  "gitHead": "576acebfdde8a7740558cada9e608353cc42a6ba"
 }
