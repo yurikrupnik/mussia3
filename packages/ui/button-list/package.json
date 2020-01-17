@@ -1,6 +1,6 @@
 {
   "name": "@mussia/button-list",
-  "version": "6.0.1",
+  "version": "6.0.2",
   "description": "> TODO: description",
   "author": "yurikrupnik <krupnik.yuri@gmail.com>",
   "homepage": "https://github.com/yurikrupnik/mussia3/tree/master/packages/ui/button-list#readme",
@@ -42,7 +42,7 @@
     "react": "^16.10.2"
   },
   "dependencies": {
-    "@mussia/button": "^5.0.1"
+    "@mussia/button": "^5.0.2"
   },
   "gitHead": "1800f9c7794bc75b7f6f0c0760033e74fa408b6c"
 }
