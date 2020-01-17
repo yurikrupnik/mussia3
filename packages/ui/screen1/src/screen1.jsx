@@ -30,7 +30,7 @@ const routes = [
         component: Route1,
         // render: DashboardHeader,
         // exact: true,
-        key: 'change',
+        key: 'ssss',
         exact: true
     },
     {
