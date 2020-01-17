@@ -614,16 +614,34 @@ jobs:
                   command: git diff --quiet && git diff --staged --quiet || git commit -m "edit publish-command.text file"
 
             - run:
-                  name: cat publish-command.text
-                  command: |
-                      cat publish-command.text
-                      npx lerna exec --stream --since -- npm i
-                      npx lerna run --parallel build --since
-                      npx lerna publish prepatch --canary --yes --no-push --conventional-commits --preid $CIRCLE_BRANCH --dist-tag $CIRCLE_BRANCH
-                      npx lerna exec -- npm install --package-lock-only --ignore-scripts --no-audit
-                      git add -u
-                      git diff --quiet && git diff --staged --quiet || git commit -am "package-lock.json update"
-                      git push --set-upstream origin $CIRCLE_BRANCH --follow-tags
+                  name: npx lerna exec --stream --since -- npm i
+                  command: npx lerna exec --stream --since -- npm i
+            - run:
+                  name: npx lerna run --parallel build --since
+                  command: npx lerna run --parallel build --since
+            - run:
+                name: npx lerna publish prepatch --canary --yes --no-push --conventional-commits --preid $CIRCLE_BRANCH --dist-tag $CIRCLE_BRANCH
+                command: npx lerna publish prepatch --canary --yes --no-push --conventional-commits --preid $CIRCLE_BRANCH --dist-tag $CIRCLE_BRANCH
+            - run:
+                name: npx lerna exec -- npm install --package-lock-only --ignore-scripts --no-audit
+                command: npx lerna exec -- npm install --package-lock-only --ignore-scripts --no-audit
+            - run:
+                name: git add -u
+                command: git add -u
+            - run:
+                name: git diff --quiet && git diff --staged --quiet || git commit -am "package-lock.json update"
+                command: git diff --quiet && git diff --staged --quiet || git commit -am "package-lock.json update"
+            - run:
+                name: git push --set-upstream origin $CIRCLE_BRANCH --follow-tags
+                command: git push --set-upstream origin $CIRCLE_BRANCH --follow-tags
+
+#                      npx lerna exec --stream --since -- npm i
+#                      npx lerna run --parallel build --since
+#                      npx lerna publish prepatch --canary --yes --no-push --conventional-commits --preid $CIRCLE_BRANCH --dist-tag $CIRCLE_BRANCH
+#                      npx lerna exec -- npm install --package-lock-only --ignore-scripts --no-audit
+#                      git add -u
+#                      git diff --quiet && git diff --staged --quiet || git commit -am "package-lock.json update"
+#                      git push --set-upstream origin $CIRCLE_BRANCH --follow-tags
 
 workflows:
     version: 2
