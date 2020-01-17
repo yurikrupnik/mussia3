@@ -1,1 +1,1 @@
- --scope func1 --scope @mussia/button-list --scope @mussia/button --scope @mussia/list-styled --scope @mussia/list --scope @mussia/screen1 --scope firebase --scope @mussia/webserver1 --scope webserver2
+ --scope @mussia/webserver1 --scope webserver2
