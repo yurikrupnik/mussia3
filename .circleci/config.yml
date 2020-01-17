@@ -619,7 +619,7 @@ jobs:
                       cat publish-command.text
                       npx lerna exec --stream --since -- npm i
                       npx lerna run --parallel build --since
-                      npx lerna publish premajor --yes --no-push --conventional-commits --preid $CIRCLE_BUILD_NUM --dist-tag $CIRCLE_BRANCH
+                      npx lerna publish prepatch --canary --yes --no-push --conventional-commits --preid $CIRCLE_BUILD_NUM --dist-tag $CIRCLE_BRANCH
                       npx lerna exec -- npm install --package-lock-only --ignore-scripts --no-audit
                       git add -u
                       git diff --quiet && git diff --staged --quiet || git commit -am "package-lock.json update"
