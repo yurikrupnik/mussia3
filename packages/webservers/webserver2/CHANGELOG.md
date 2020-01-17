@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.5-one-more-fi.0](https://github.com/yurikrupnik/mussia3/compare/webserver2@5.0.4...webserver2@5.0.5-one-more-fi.0) (2020-01-17)
+
+**Note:** Version bump only for package webserver2
+
+
+
+
+
 ## [5.0.4](https://github.com/yurikrupnik/mussia3/compare/webserver2@5.0.3...webserver2@5.0.4) (2020-01-17)
 
 **Note:** Version bump only for package webserver2
