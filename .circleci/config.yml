@@ -621,7 +621,7 @@ jobs:
                   command: npx lerna run --parallel build --since
             - run:
                 name: npx lerna publish prepatch --canary --yes --no-push --conventional-commits --preid $CIRCLE_BRANCH --dist-tag $CIRCLE_BRANCH
-                command: npx lerna publish prepatch --canary --yes --no-push --conventional-commits --preid $CIRCLE_BRANCH --dist-tag $CIRCLE_BRANCH
+                command: npx lerna publish prepatch --yes --no-push --conventional-commits --preid $CIRCLE_BRANCH --dist-tag $CIRCLE_BRANCH
             - run:
                 name: npx lerna exec -- npm install --package-lock-only --ignore-scripts --no-audit
                 command: npx lerna exec -- npm install --package-lock-only --ignore-scripts --no-audit
