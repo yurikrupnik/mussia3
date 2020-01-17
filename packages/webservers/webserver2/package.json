@@ -51,7 +51,7 @@
     "@mussia/button-list": "^6.0.2",
     "@mussia/list": "^6.0.2",
     "@mussia/render": "^2.0.0",
-    "@mussia/screen1": "^6.0.1",
+    "@mussia/screen1": "^7.0.0",
     "axios": "^0.19.1",
     "cors": "^2.8.5",
     "custom-react": "^3.0.1",
