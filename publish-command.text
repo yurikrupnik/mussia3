@@ -1,1 +1,1 @@
- --scope @mussia/webserver1
+ --scope @mussia/screen1 --scope @mussia/webserver1
