@@ -5,7 +5,7 @@ const Stam = (props) => {
     const { children } = props;
     return (
         <div>
-            <h2>stam a</h2>
+            <h2>stam b</h2>
             {children}
         </div>
     );
