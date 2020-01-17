@@ -54,7 +54,7 @@ const Screen1 = (props) => {
             <List
                 data={[
                     {
-                        _id: '1'
+                        _id: '13'
                     },
                     {
                         _id: '12'
