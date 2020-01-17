@@ -1,6 +1,6 @@
 {
   "name": "@mussia/webserver1",
-  "version": "6.0.5-another-test.0",
+  "version": "6.0.6-another-test.0",
   "description": "> TODO: description",
   "author": "yurikrupnik <krupnik.yuri@gmail.com>",
   "homepage": "https://github.com/yurikrupnik/mussia3/tree/master/packages/webservers/webserver1#readme",
@@ -54,7 +54,7 @@
     "@mussia/list": "^6.0.3",
     "@mussia/list-styled": "^6.0.3",
     "@mussia/render": "^2.0.0",
-    "@mussia/screen1": "^7.0.4-another-test.0",
+    "@mussia/screen1": "^7.0.5-another-test.0",
     "axios": "^0.19.1",
     "cors": "^2.8.5",
     "custom-react": "^3.0.1",

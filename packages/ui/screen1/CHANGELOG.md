@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.5-another-test.0](https://github.com/yurikrupnik/mussia3/compare/@mussia/screen1@7.0.4-another-test.0...@mussia/screen1@7.0.5-another-test.0) (2020-01-17)
+
+**Note:** Version bump only for package @mussia/screen1
+
+
+
+
+
 ## [7.0.4-another-test.0](https://github.com/yurikrupnik/mussia3/compare/@mussia/screen1@7.0.3...@mussia/screen1@7.0.4-another-test.0) (2020-01-17)
 
 **Note:** Version bump only for package @mussia/screen1
