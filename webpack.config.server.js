@@ -1,4 +1,4 @@
-// const reduce = require('lodash/reduce');
+const reduce = require('lodash/reduce');
 const webpack = require('webpack');
 const path = require('path');
 const fs = require('fs');
@@ -17,10 +17,10 @@ const json = require(path.resolve(cwd, './package')); // eslint-disable-line
 const entry = json.name.includes('webserver') || json.name.includes('docs')
     ? './index.jsx' : './index.js';
 
-// const alias = reduce(json.dependencies, (acc, v, k) => {
-//     acc[k] = path.resolve(cwd, 'node_modules', k);
-//     return acc;
-// }, {});
+const alias = reduce(json.dependencies, (acc, v, k) => {
+    acc[k] = path.resolve(cwd, 'node_modules', k);
+    return acc;
+}, {});
 
 // console.log('alias', alias);
 
@@ -31,8 +31,8 @@ module.exports = (env, argv) => {
     return {
         context: path.resolve(cwd, 'src'),
         resolve: {
-            extensions: ['.json', '.js', '.jsx', '.css', '.scss'],
-            // alias,
+            extensions: ['.json', '.js', '.jsx', '.css', '.scss', '.ts', '.tsx'],
+            alias,
             // modules: [path.resolve(cwd), 'node_modules']
         },
         target: 'node', // in order to ignore built-in modules like path, fs, etc.
@@ -48,6 +48,21 @@ module.exports = (env, argv) => {
         mode: isProd ? 'production' : 'development',
         module: {
             rules: [
+                {
+                    test: /\.ts(x?)$/,
+                    exclude: /node_modules/,
+                    use: [
+                        {
+                            loader: "ts-loader"
+                        }
+                    ]
+                },
+                // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
+                {
+                    enforce: "pre",
+                    test: /\.js$/,
+                    loader: "source-map-loader"
+                },
                 {
                     test: /\.(js|jsx)$/,
                     use: [

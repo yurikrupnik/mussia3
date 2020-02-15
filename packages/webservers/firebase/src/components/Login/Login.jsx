@@ -239,26 +239,6 @@ const Login = () => (
             }}
             onSubmit={(values) => {
                 loginUser(values.email, values.password);
-                // authContext.login(() => {});
-                // console.log('app', app);
-                // console.log('firebase', firebase);
-                // console.log('auth', auth);
-                // firebase.auth().signInWithRedirect(provider)
-                // request.post('/api/login', {
-                // request.post('/api/login', {
-                //     email: 'krupnik.yuri@gmmail.com',
-                //     password: 'ludmila900',
-                //     // headers: {
-                //     //     'Authorization': 'Bearer 12345'
-                //     // }
-                // })
-                // // request.get('/api/login')
-                //     .then((res) => {
-                //         console.log(res);
-                //     })
-                //     .catch((rerror) => {
-                //         console.log(rerror);
-                //     });
             }}
         >
             {(formProps) => {

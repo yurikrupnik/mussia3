@@ -1,9 +1,10 @@
 import React from 'react';
+import loadable from '@loadable/component';
 import Router from '../Router';
 import routes from './routes';
-// import App from '../App';
-
+import Hello from '../Hello';
 import { Provider as ThemeProviders } from '../contexts/themes';
+// const Hello = loadable(() => import(/* webpackChunkName: "Hello" */ '../Hello.tsx'));
 
 // const theme = {
 //     palette: {
@@ -24,6 +25,7 @@ import { Provider as ThemeProviders } from '../contexts/themes';
 const Dashboard = () => (
     <>
         <ThemeProviders>
+            <Hello lol={true}/>
             <Router routes={routes} />
         </ThemeProviders>
     </>

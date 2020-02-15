@@ -9,20 +9,26 @@ import loadable from '@loadable/component';
 // import Groundcontrol from './Groundcontrol';
 
 // const Root = loadable(() => import(/* webpackChunkName: "root" */ './Root'));
-// const Dashboard = loadable(() => import(/* webpackChunkName: "dashboard" */ './Dashboard'));
+// const Hello = loadable(() => import(/* webpackChunkName: "Hello" */ './Hello'));
+const Dashboard = loadable(() => import(/* webpackChunkName: "dashboard" */ './Dashboard'));
 // const Header = loadable(() => import(/* webpackChunkName: "header" */ './Header'));
 const Header = loadable(() => import(/* webpackChunkName: "header" */ './Header/DefaultHeader'));
 const Screen1View = loadable(() => import(/* webpackChunkName: "screen1View" */ './screen1View'));
 // const Brands = loadable(() => import(/* webpackChunkName: "brands" */ './Brands'));
 // const Careers = loadable(() => import(/* webpackChunkName: "Careers" */ './Careers'));
-// const Dreamteam = loadable(() => import(/* webpackChunkName: "Dreamteam" */ './Dreamteam'));
-// const Shows = loadable(() => import(/* webpackChunkName: "Shows" */ './Shows'));
+const Dreamteam = loadable(() => import(/* webpackChunkName: "Dreamteam" */ './Dreamteam'));
+const Shows = loadable(() => import(/* webpackChunkName: "Shows" */ './Shows'));
 
 // const Register = loadable(() => import(/* webpackChunkName: "Register" */ './Register'));
 // const ChatRoom = loadable(() => import(/* webpackChunkName: "ChatRoom" */ './ChatRoom'));
 // const Projects = loadable(() => import(/* webpackChunkName: "Projects" */ './Projects'));
 
 const routes = [
+    // {
+    //     path: '/',
+    //     component: Hello,
+    //     key: 'gr'
+    // },
     {
         path: '/',
         component: Header,
@@ -41,34 +47,34 @@ const routes = [
         key: 'root',
         // exact: true
     },
-    // {
-    //     path: '/',
-    //     component: Shows,
-    //     key: 'main',
-    //     exact: true
-    // },
+    {
+        path: '/',
+        component: Shows,
+        key: 'main',
+        exact: true
+    },
     {
         path: '/dashboard',
-        component: Screen1View,
-        key: 'Screen1View',
+        component: Dashboard,
+        key: 'Dashboard',
         // exact: true
     },
-    // {
-    //     path: '/brands',
-    //     component: Brands,
-    //     key: 'brands'
-    // },
+    {
+        path: '/brands',
+        component: Screen1View,
+        key: 'Screen1View'
+    },
     // {
     //     path: '/careers',
     //     component: Careers,
     //     key: 'careers'
     // },
-    // {
-    //     path: '/dreamteam',
-    //     component: Dreamteam,
-    //     key: 'dreamteam',
-    //     // exact: true
-    // },
+    {
+        path: '/dreamteam',
+        component: Dreamteam,
+        key: 'dreamteam',
+        // exact: true
+    },
     // {
     //     path: '/groundcontrol',
     //     component: Groundcontrol,

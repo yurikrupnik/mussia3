@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import loadable from '@loadable/component';
 
+const Hello = loadable(() => import(/* webpackChunkName: "hello" */ '../Hello/Hello'));
 const DashboardHeader = loadable(() => import(/* webpackChunkName: "Header" */ '../Dashboard/DashboardHeader'));
 const DefaultHeader = loadable(() => import(/* webpackChunkName: "Header" */ './DefaultHeader'));
 const ProfileHeader = loadable(() => import(/* webpackChunkName: "Header" */ './ProfileHeader'));
@@ -100,6 +101,7 @@ const Header = (props) => {
     }
     return (
         <div>
+            <Hello />
             <DefaultHeader
                 open={open}
                 isDashboard={isDashboard}

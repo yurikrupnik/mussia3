@@ -5,7 +5,7 @@ import morgan from 'morgan';
 import helmet from 'helmet';
 import ejs from 'ejs';
 import proxy from 'express-http-proxy';
-// import render from '@krupnik/render';
+// import render from '@mussia/render';
 import render from './services/render';
 import server from './services/socket/server';
 import App from './components/App';

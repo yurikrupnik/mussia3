@@ -10,7 +10,6 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 
 // import FormControl from '@material-ui/core/FormControl';
-// import Select from '@material-ui/core/Select';
 
 const regularRoutes = [
     {

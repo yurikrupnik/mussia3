@@ -31,7 +31,7 @@ module.exports = (env) => {
         },
         target: 'web',
         resolve: {
-            extensions: ['.json', '.js', '.jsx', '.css', '.scss'],
+            extensions: ['.json', '.js', '.jsx', '.css', '.scss', '.ts', '.tsx'],
             alias
         },
         devtool: isProd ? 'source-map' : 'eval-cheap-module-source-map',
@@ -45,6 +45,21 @@ module.exports = (env) => {
         mode: isProd ? 'production' : 'development',
         module: {
             rules: [
+                {
+                    test: /\.ts(x?)$/,
+                    exclude: /node_modules/,
+                    use: [
+                        {
+                            loader: "ts-loader"
+                        }
+                    ]
+                },
+                // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
+                {
+                    enforce: "pre",
+                    test: /\.js$/,
+                    loader: "source-map-loader"
+                },
                 {
                     test: /\.(js|jsx)$/,
                     use: [
