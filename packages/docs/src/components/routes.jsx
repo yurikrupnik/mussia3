@@ -27,7 +27,7 @@ const routes = [
         ),
         key: 'Shows',
         exact: true
-    },
+    }
     // {
     //     path: '/register',
     //     component: Register,

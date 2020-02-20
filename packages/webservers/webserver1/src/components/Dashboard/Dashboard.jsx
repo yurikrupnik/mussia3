@@ -1,7 +1,7 @@
 import React from 'react';
 import routes from './routes';
 import Router from '../Router';
-import App from '../App';
+// import App from '../App';
 
 import { Provider as ThemeProviders } from '../contexts/themes';
 
@@ -11,7 +11,7 @@ const theme = {
             main: '#afa9dc',
             light: '#dc5255',
             dark: '#bfdc35'
-        },
+        }
     }
 };
 

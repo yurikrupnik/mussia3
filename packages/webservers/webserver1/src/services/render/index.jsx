@@ -49,13 +49,13 @@ const render = (App, routes, fileLocation) => {
                         <App userAgent={req.headers['user-agent']} routes={routes} />
                     </StaticRouter>
                 ));
-                // const tags = extractor.getScriptTags();
+                const tags = extractor.getScriptTags();
                 // const links = extractor.getLinkTags();
                 const state = {
                     title,
                     html,
                     appData,
-                    tags: '',
+                    tags,
                     links: ''
                 };
                 console.log('state', state); // eslint-disable-line

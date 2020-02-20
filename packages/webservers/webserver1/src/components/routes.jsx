@@ -15,7 +15,9 @@ const Dashboard = loadable(() => import(/* webpackChunkName: "dashboard" */ './D
 const Groundcontrol = loadable(() => import(/* webpackChunkName: "Groundcontrol" */ './Groundcontrol'));
 // const Header = loadable(() => import(/* webpackChunkName: "header" */ './Header'));
 // todo check fails coz
-// const Screen1View = loadable(() => import(/* webpackChunkName: "screen1View" */ './screen1View'));
+// const Screen1View = loadable(() =>
+// import(/* webpackChunkName: "screen1View" */ './screen1View'));
+
 const Brands = loadable(() => import(/* webpackChunkName: "brands" */ './Brands'));
 const Careers = loadable(() => import(/* webpackChunkName: "Careers" */ './Careers'));
 const Dreamteam = loadable(() => import(/* webpackChunkName: "Dreamteam" */ './Dreamteam'));

@@ -11,11 +11,9 @@ import App from '../../App';
 //     }
 // };
 
-const ProfilesS = () => {
-    return (
-        <App routes={routes} />
-    );
-};
+const ProfilesS = () => (
+    <App routes={routes} />
+);
 // export default React.memo(() => (
 //     <Router routes={routes} />
 // ));
