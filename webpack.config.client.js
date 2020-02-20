@@ -12,6 +12,8 @@ const cwd = process.cwd();
 const json = require(path.resolve(cwd, './package')); // eslint-disable-line
 
 const alias = reduce(json.dependencies, (acc, v, k) => {
+    // console.log(v)
+    // console.log(k)
     acc[k] = path.resolve(cwd, 'node_modules', k);
     return acc;
 }, {});
@@ -34,7 +36,7 @@ module.exports = (env) => {
             extensions: ['.json', '.js', '.jsx', '.css', '.scss'],
             alias
         },
-        devtool: isProd ? 'source-map' : 'eval-cheap-module-source-map',
+        devtool: isProd ? '' : 'eval-cheap-module-source-map',
         entry: './client.jsx',
         output: {
             filename: '[name].js',

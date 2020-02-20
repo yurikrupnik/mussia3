@@ -12,8 +12,8 @@ import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
-import useTheme from '@material-ui/core/styles/useTheme';
-import { makeStyles } from '@material-ui/core/styles';
+// import useTheme from '@material-ui/core/styles/useTheme';
+// import { makeStyles } from '@material-ui/core/styles';
 // import AppBar from '@material-ui/core/AppBar';
 // import Tabs from '@material-ui/core/Tabs';
 // import Tab from '@material-ui/core/Tab';
@@ -67,12 +67,12 @@ TabPanel.propTypes = {
 //     };
 // }
 //
-const useStyles = makeStyles(({
-    root: {
-        flexGrow: 1,
-        // backgroundColor: theme.palette.anotherColor.main,
-    },
-}));
+// const useStyles = makeStyles(({
+//     root: {
+//         flexGrow: 1,
+//         // backgroundColor: theme.palette.anotherColor.main,
+//     },
+// }));
 //
 //
 // const Div = styled.div`
@@ -83,18 +83,18 @@ const useStyles = makeStyles(({
 // }};
 // `;
 
-const pageStyles = makeStyles((theme) => ({
-    root: {
-        backgroundColor: theme.palette.background.backdrop
-    }
-}));
+// const pageStyles = makeStyles((theme) => ({
+//     root: {
+//         backgroundColor: theme.palette.background.backdrop
+//     }
+// }));
 
 const Page = (props) => {
     const { children } = props;
-    const s = pageStyles();
+    // const s = pageStyles();
     return (
         <Card classes={{
-            root: s.root
+            // root: s.root
         }}
         >
             {children}
@@ -113,8 +113,10 @@ Page.propTypes = {
 
 
 function DashboardMain() {
-    const theme = useTheme();
-    const usedStyles = useStyles();
+    // const theme = useTheme();
+    const theme = {};
+    const usedStyles = {};
+    // const usedStyles = useStyles();
     // console.log(theme);
     // console.log(theme.background ? theme.background : '');
     // const classes = useStyles();

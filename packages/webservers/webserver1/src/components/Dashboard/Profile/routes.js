@@ -1,8 +1,11 @@
 import loadable from '@loadable/component';
 // import React from 'react';
+// import Leaderboard from './Leaderboard';
+// import ProfileMain from './ProfileMain';
+// import ProfileUserName from './ProfileUserName';
+// import Header from '../../Header/ProfileHeader';
 
-import Header from '../../Header/ProfileHeader';
-
+const Header = loadable(() => import('../../Header/ProfileHeader'));
 const Leaderboard = loadable(() => import('./Leaderboard'));
 const ProfileMain = loadable(() => import('./ProfileMain'));
 const ProfileUserName = loadable(() => import('./ProfileUserName'));

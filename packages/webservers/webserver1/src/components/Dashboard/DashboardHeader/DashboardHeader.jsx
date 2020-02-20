@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -17,7 +17,7 @@ import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 // import withTheme from '@material-ui/core/styles/withTheme';
-// import useTheme from '@material-ui/core/styles/useTheme';
+import useTheme from '@material-ui/core/styles/useTheme';
 import { Context } from '../../contexts/themes';
 import styles from './dashboard-header.scss';
 
@@ -62,8 +62,8 @@ const appRoutes = [
 
 const DashboardHeader = (props) => {
     // const {regularRoutes, toggleOpen, open} = props;
-    const { location } = props;
-    const { pathname } = location;
+    const {location} = props;
+    const {pathname} = location;
     // console.log(props)
     // console.log(pathname.includes('dashboard'))
     if (pathname.includes('/dashboard/profile')) {
@@ -73,7 +73,7 @@ const DashboardHeader = (props) => {
     const theme = React.useContext(Context);
     // const materialThemeFromUseTheme = useTheme();
     // console.log('materialThemeFromUseTheme', materialThemeFromUseTheme);
-    // const ss = useTheme();
+    const ss = useTheme();
     // console.log('ss', ss);
     // console.log('theme', theme);
 
@@ -98,28 +98,14 @@ const DashboardHeader = (props) => {
                         News
                     </Typography>
                     <RadioIcon />
-                    <Button color="inherit" onClick={() => {}}>Login</Button>
+                    <Button color="inherit" onClick={() => {
+                    }}>Login</Button>
                     <Switch
                         checked={theme.theme.palette.type === 'dark'}
                         onChange={theme.toggleType}
                         color="primary"
                     />
 
-                    <FormControl>
-                        <InputLabel htmlFor="age-simple">Age</InputLabel>
-                        <Select
-                            value={10}
-                            // onChange={handleChange}
-                            inputProps={{
-                                name: 'age',
-                                id: 'age-simple',
-                            }}
-                        >
-                            <MenuItem value={10}>Ten</MenuItem>
-                            <MenuItem value={20}>Twenty</MenuItem>
-                            <MenuItem value={30}>Thirty</MenuItem>
-                        </Select>
-                    </FormControl>
                 </Toolbar>
             </AppBar>
             <Drawer
@@ -182,4 +168,4 @@ DashboardHeader.propTypes = {
     // open: PropTypes.bool.isRequired,
 };
 
-export default React.memo(DashboardHeader);
+export default DashboardHeader;

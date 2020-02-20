@@ -36,7 +36,7 @@ webServer.use('/report', (req, res) => {
 route.all('/api/*', proxy(`${destHost}:${destPort}`));
 
 webServer.use(route);
-webServer.use(render(isProd ? App : null, routes, assets));
+webServer.use(render(App, routes, assets));
 
 server(webServer, destHost, destPort).listen(port, (err) => {
     if (err) {

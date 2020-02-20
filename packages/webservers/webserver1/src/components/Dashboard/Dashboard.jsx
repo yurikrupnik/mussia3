@@ -1,19 +1,19 @@
 import React from 'react';
-import Router from '../Router';
 import routes from './routes';
-// import App from '../App';
+import Router from '../Router';
+import App from '../App';
 
 import { Provider as ThemeProviders } from '../contexts/themes';
 
-// const theme = {
-//     palette: {
-//         primary: {
-//             main: '#acdc8e',
-//             light: '#dc5255',
-//             dark: '#bfdc35'
-//         },
-//     }
-// };
+const theme = {
+    palette: {
+        primary: {
+            main: '#afa9dc',
+            light: '#dc5255',
+            dark: '#bfdc35'
+        },
+    }
+};
 
 // <App
 //    routes={routes}
@@ -22,11 +22,9 @@ import { Provider as ThemeProviders } from '../contexts/themes';
 // />
 
 const Dashboard = () => (
-    <>
-        <ThemeProviders>
-            <Router routes={routes} />
-        </ThemeProviders>
-    </>
+    <ThemeProviders theme={theme}>
+        <Router routes={routes} />
+    </ThemeProviders>
 );
 
 export default Dashboard;

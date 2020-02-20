@@ -86,22 +86,22 @@ services:
     depends_on:
       - db
     command: npm run start
-#  webserver1:
-#    image: yurikrupnik/client-apps_webserver1
-#    build:
-#      context: packages/webservers/webserver1
-#      args:
-#        - modulePath=/packages/webservers/webserver1
-#    container_name: webserver1
-#    environment:
-##      - DEST_PORT=8000
-#      - PORT=9000
-##      - DESTIN+ATION_HOST=http://gateway1
-#    ports:
-#      - 9000:9000
+  webserver1:
+    image: yurikrupnik/client-apps_webserver1
+    build:
+      context: packages/webservers/webserver1
+      args:
+        - modulePath=/packages/webservers/webserver1
+    container_name: webserver1
+    environment:
+#      - DEST_PORT=8000
+      - PORT=9000
+#      - DESTIN+ATION_HOST=http://gateway1
+    ports:
+      - 7000:7000
 #    command: npm run start
-##    depends_on:
-##      - gateway1
+#    depends_on:
+#      - gateway1
 #  webserver2:
 #    image: yurikrupnik/client-apps_webserver2
 #    build:

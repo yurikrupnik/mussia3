@@ -10,6 +10,15 @@ import App from '../../App';
 //         },
 //     }
 // };
-export default React.memo(() => (
-    <App routes={routes} />
-));
+
+const ProfilesS = () => {
+    return (
+        <App routes={routes} />
+    );
+};
+// export default React.memo(() => (
+//     <Router routes={routes} />
+// ));
+
+
+export default ProfilesS;

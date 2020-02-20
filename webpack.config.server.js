@@ -10,6 +10,7 @@ const SwaggerJSDocWebpackPlugin = require('swagger-jsdoc-webpack-plugin');
 const JsDocPlugin = require('jsdoc-webpack-plugin-v2');
 // const { StatsWriterPlugin } = require('webpack-stats-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+const LoadablePlugin = require('@loadable/webpack-plugin');
 
 const filename = 'server.js';
 const cwd = process.cwd();
@@ -37,7 +38,7 @@ module.exports = (env, argv) => {
         },
         target: 'node', // in order to ignore built-in modules like path, fs, etc.
         externals: [nodeExternals()], // in order to ignore all modules in node_modules folder
-        devtool: 'source-map',
+        devtool: isProd ? '' : 'eval-cheap-module-source-map',
         entry,
         output: {
             path: path.resolve(cwd, 'dist'),
@@ -97,6 +98,7 @@ module.exports = (env, argv) => {
             // new StatsWriterPlugin({
             //     fields: ["assets", "modules"]
             // }),
+            new LoadablePlugin(),
             new GenerateJsonPlugin('package.json', Object.assign({}, json, {
                 main: filename,
                 files: [],
