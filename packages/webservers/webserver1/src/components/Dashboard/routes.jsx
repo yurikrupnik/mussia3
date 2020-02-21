@@ -1,23 +1,23 @@
 import loadable from '@loadable/component';
 // import React from 'react';
-// import DashboardHeader from './DashboardHeader';
-
-const Main = loadable(() => import(/* webpackChunkName: "dasboard-main" */ './Main'));
-const Activity = loadable(() => import('./Activity'));
-const DashboardHeader = loadable(() => import('./DashboardHeader'));
-const Overlays = loadable(() => import('./Overlays'));
-const Account = loadable(() => import('./Account'));
-const Themes = loadable(() => import('./Themes'));
-const Profile = loadable(() => import('./Profile'));
-// const Header = loadable(() => import('./Header'));
-
-
-// import Main from './Main';
+import DashboardHeader from './DashboardHeader';
+import Main from './Main';
 // import Activity from './Activity';
 // import Overlays from './Overlays';
 // import Account from './Account';
 // import Themes from './Themes';
 // import Profile from './Profile';
+
+// const Main = loadable(() => import(/* webpackChunkName: "dasboardDDdain" */ './Main'));
+// const DashboardHeader = loadable(() =>
+// import(/* webpackChunkName: "DashboardHeader" */ './DashboardHeader'));
+
+const Activity = loadable(() => import(/* webpackChunkName: "Activity-main" */ './Activity'));
+const Overlays = loadable(() => import(/* webpackChunkName: "Overlays" */'./Overlays'));
+const Account = loadable(() => import(/* webpackChunkName: "Account" */ './Account'));
+const Themes = loadable(() => import(/* webpackChunkName: "Themes" */ './Themes'));
+const Profile = loadable(() => import(/* webpackChunkName: "Profileaaa" */ './Profile'));
+
 
 const routes = [
     {

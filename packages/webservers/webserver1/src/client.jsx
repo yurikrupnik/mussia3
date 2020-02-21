@@ -32,7 +32,7 @@ if (!config.isProd) {
     );
 } else {
     loadableReady(() => {
-        hydrate((
+        hydrate(
             <BrowserRouter>
                 <App
                     userAgent={global.navigator.userAgent}
@@ -40,7 +40,8 @@ if (!config.isProd) {
                     providers={[]}
                     theme={theme}
                 />
-            </BrowserRouter>
-        ), global.document.getElementById('root'));
+            </BrowserRouter>,
+            global.document.getElementById('root')
+        );
     });
 }

@@ -2,6 +2,10 @@ import React from 'react';
 import routes from './routes';
 import Router from '../../Router';
 
-export default React.memo(() => (
-    <Router routes={routes} />
-));
+const Account = () => <Router routes={routes} />;
+
+// export default React.memo(() => (
+//     <Router routes={routes} />
+// ));
+
+export default Account;

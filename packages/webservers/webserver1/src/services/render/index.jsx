@@ -33,6 +33,14 @@ const render = (App, routes, fileLocation) => {
                 }
                 const context = {};
                 const title = 'my title';
+                // const html = renderToString((
+                //     <StaticRouter
+                //         location={req.url}
+                //         context={appData}
+                //     >
+                //         <App userAgent={req.headers['user-agent']} routes={routes} />
+                //     </StaticRouter>
+                // ));
                 const html = renderToString(extractor.collectChunks(
                     <StaticRouter
                         location={req.url}
@@ -42,13 +50,13 @@ const render = (App, routes, fileLocation) => {
                     </StaticRouter>
                 ));
                 const tags = extractor.getScriptTags();
-                const links = extractor.getLinkTags();
+                // const links = extractor.getLinkTags();
                 const state = {
                     title,
                     html,
                     appData,
                     tags,
-                    links
+                    links: ''
                 };
                 console.log('state', state); // eslint-disable-line
                 return context.url ? response.redirect(301, context.url) : response.render('index.ejs', state);
