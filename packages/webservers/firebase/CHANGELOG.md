@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.4](https://github.com/yurikrupnik/mussia3/compare/firebase@4.0.3...firebase@4.0.4) (2020-02-21)
+
+**Note:** Version bump only for package firebase
+
+
+
+
+
 ## [4.0.3](https://github.com/yurikrupnik/mussia3/compare/firebase@4.0.2...firebase@4.0.3) (2020-01-17)
 
 **Note:** Version bump only for package firebase
