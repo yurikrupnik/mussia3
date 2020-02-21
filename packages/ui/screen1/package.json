@@ -36,12 +36,12 @@
     "prop-types": "^15.7.2",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
-    "styled-components": "^5.0.0"
+    "styled-components": "^5.0.1"
   },
   "peerDependencies": {
     "prop-types": "^15.7.2",
     "react": "^16.10.2",
-    "styled-components": "^4.4.0"
+    "styled-components": "^5.0.1"
   },
   "dependencies": {
     "@loadable/component": "^5.11.0",
