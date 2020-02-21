@@ -1,4 +1,4 @@
-const Supertest = require('supertest');
+// const Supertest = require('supertest');
 
 // const supertest = Supertest('www.google.com' || 'https://europe-west1-mussia3.cloudfunctions.net/func1');
 
