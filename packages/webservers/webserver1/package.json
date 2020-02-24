@@ -62,7 +62,7 @@
     "express": "^4.17.1",
     "express-http-proxy": "^1.6.0",
     "formik": "^2.0.1",
-    "helmet": "^3.21.2",
+    "helmet": "^3.21.3",
     "morgan": "^1.9.1",
     "prop-types": "^15.7.2",
     "react": "^16.10.2",
