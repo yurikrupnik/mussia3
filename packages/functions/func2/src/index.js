@@ -5,41 +5,40 @@
 // };
 
 // import button from '@krupnik/button';
+import axios from 'axios';
+import chalk from 'chalk';
+// import mongoose from 'mongoose';
+//require chalk module to give colors to console text
 // import render from '@krupnik/render/dist/cjs/index';
 // import morgan from 'morgan/index';
-// console.log('process.env', process.env);
 
 const func2 = (req, res) => {
-    // const msg = req.query.msg || 'Hello world';
-    // const lang = req.query.lang || 'es';
-    // res.status(200)
-    res.send({
-        all: 'func2 response'
-    });
-    // translate.translate(msg, lang, (err, translation) => {
-    //     if (err) {
-    //         res.status(500)
-    //             .send(err);
-    //     } else {
-    //         res.status(200)
-    //             .send(translation);
-    //     }
-    //     // translation;
+    return res.status(200).send('ok');
+    // const dbURL = 'mongodb://yuri:ludmila900@ds263876.mlab.com:63876/client-app-projects';
+    // mongoose.connect(dbURL);
+    //
+    // mongoose.connection.on('connected', function(){
+    //     console.log(connected('Mongoose default connection is open to ', dbURL));
+    //     req.status(500).send('failsed');
     // });
-
-
-    // return res.status(200)
-    //     .json({
-    //         lol: 'aol',
-    //         port
+    //
+    // mongoose.connection.on('error', function(err){
+    //     // console.log(error('Mongoose default connection has occured '+err+' error'));
+    //     req.status(500).send('failsed');
+    // });
+    //
+    // mongoose.connection.on('disconnected', function(){
+    //     console.log(disconnected('Mongoose default connection is disconnected'));
+    //     req.status(500).send('failsed');
+    // });
+    //
+    // process.on('SIGINT', function(){
+    //     mongoose.connection.close(function(){
+    //         // console.log(termination('Mongoose default connection is disconnected due to application termination'));
+    //         req.status(500).send('failsed');
+    //         process.exit(0);
     //     });
-    // return fetch('https://api.github.com/users/yurikrupnik')
-    //     .then((response) => {
-    //         return res.status(200).json(response);
-    //     })
-    //     .catch((error) => {
-    //         console.log(error);
-    //     });
+    // });
 };
 
 function func3(req, res) {

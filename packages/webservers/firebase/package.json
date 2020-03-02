@@ -1,6 +1,6 @@
 {
   "name": "firebase",
-  "version": "4.0.4",
+  "version": "4.0.5",
   "description": "> TODO: description",
   "author": "yurikrupnik <krupnik.yuri@gmail.com>",
   "homepage": "https://github.com/yurikrupnik/mussia3/tree/master/packages/webservers/firebase#readme",
@@ -24,7 +24,7 @@
     "url": "git+https://github.com/yurikrupnik/mussia3.git"
   },
   "scripts": {
-    "start": "run-p start:client start:server serve",
+    "starts": "run-p start:client start:server serve",
     "start:server": "webpack --config=webpack.config.server.js -w --color",
     "start:client": "webpack --config=webpack.config.client.js -w --color",
     "prebuild": "rimraf dist functions",
@@ -36,7 +36,7 @@
     "e2e0": "jest e2e --colors",
     "serve": "firebase serve -p $npm_package_config_port",
     "predeploy": "npm run build",
-    "deploy": "firebase deploy --token $FIREBASE_TOKEN"
+    "deploys": "firebase deploy --token $FIREBASE_TOKEN"
   },
   "bugs": {
     "url": "https://github.com/yurikrupnik/mussia3/issues"

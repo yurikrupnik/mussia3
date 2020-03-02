@@ -1,5 +1,5 @@
 import babel from 'rollup-plugin-babel';
-import commonjs from 'rollup-plugin-commonjs';
+import commonjs from '@rollup/plugin-commonjs';
 import resolve from 'rollup-plugin-node-resolve';
 import external from 'rollup-plugin-peer-deps-external';
 import postcss from 'rollup-plugin-postcss';
@@ -26,16 +26,16 @@ const defaultModule = {
     ],
     plugins: [
         external({
-            includeDependencies: true,
+            includeDependencies: true
         }),
         postcss({
             minimize: true,
             modules: true,
-            plugins: [autoprefixer()],
+            plugins: [autoprefixer()]
         }),
         babel({}),
         resolve({
-            extensions: ['.mjs', '.js', '.jsx', '.json', '.css', '.scss', '.less'],
+            extensions: ['.mjs', '.js', '.jsx', '.json', '.css', '.scss', '.less']
         }),
         commonjs({})
     ]

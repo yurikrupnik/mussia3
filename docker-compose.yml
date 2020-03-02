@@ -67,7 +67,7 @@ services:
     depends_on:
       - db2
   users:
-    image: yurikrupnik/client-apps_service1
+    image: creativearis99/mussia3_service1
     build:
       context: packages/services/users
       args:
@@ -82,38 +82,39 @@ services:
       #      - NODE_ENV_DOCKER=true
     #      - DATABASE_URL=${users_db}
     ports:
-      - 7000:8080
+      - 8014:8080
     depends_on:
       - db
     command: npm run start
   webserver1:
-    image: yurikrupnik/client-apps_webserver1
+    image: creativearis99/mussia3_webserver1
     build:
       context: packages/webservers/webserver1
       args:
         - modulePath=/packages/webservers/webserver1
     container_name: webserver1
-    environment:
+#    environment:
 #      - DEST_PORT=8000
-      - PORT=9000
+#      - PORT=9000
 #      - DESTIN+ATION_HOST=http://gateway1
     ports:
       - 7000:7000
+      - 9000:8080
 #    command: npm run start
 #    depends_on:
 #      - gateway1
-#  webserver2:
-#    image: yurikrupnik/client-apps_webserver2
-#    build:
-#      context: packages/webservers/webserver2
-#      args:
-#        - modulePath=/packages/webservers/webserver2
-#    container_name: webserver2
-#    environment:
-#      - DEST_PORT=8000
-#      - MODULE_PATH=packages/webservers/webserver2
+  webserver2:
+    image: reativearis99/mussia3_webserver2
+    build:
+      context: packages/webservers/webserver2
+      args:
+        - modulePath=/packages/webservers/webserver2
+    container_name: webserver2
+    environment:
+      - DEST_PORT=8000
+      - MODULE_PATH=packages/webservers/webserver2
 #      - PORT=9001
-#      - DESTINATION_HOST=http://gateway1
-#    ports:
-#      - 9001:9001
+      - DESTINATION_HOST=http://gateway1
+    ports:
+      - 9001:8080
 #    command: npm run start

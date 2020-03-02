@@ -3,10 +3,33 @@ import session from 'express-session';
 import connect from 'connect-mongo';
 
 export default (url) => {
-    mongoose.connect(url, {
-        useNewUrlParser: true
-    });
+    mongoose
+        .connect(url, {
+            useNewUrlParser: true
+        })
+        .then((r) => {
+            // console.log(r);
+            r.models.project.find({}).then((data) => {
+                console.log(data);
+            });
+        });
+
     const db = mongoose.connection;
+    // console.log('db', db);
+
+    // db.collections.projects.find({}).then((r) => {
+    //     console.log(r);
+    // });
+
+    // db.models.project.find({}).then((r) => {
+    //     console.log(r);
+    // });
+    // db.collections
+    //     .models('projects')
+    //     .fine({})
+    //     .then((re) => {
+    //         console.log(re);
+    //     });
     mongoose.Promise = global.Promise;
     const opts = { url };
     const MongoStore = connect(session);

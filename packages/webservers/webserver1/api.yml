@@ -1,0 +1,20 @@
+swagger: '2'
+#info:
+#    version: '1.0.0'
+#    description: REST API for Playlist Sharer API.
+#    title: 'Playlist Sharer API'
+#
+host: auth-endpoints/aris-stat.cloud.goog
+#paths:
+#    /authorization/spotify:
+#        get:
+#            summary: Used to retrieve Spotify Authorization
+#            description: Directs the user to Spotify's authorization flow for the application
+#            responses:
+#                302:
+#                    description: Found
+# basePath: /cmjimenez90/ShareablePlaylistAPI/
+#schemes:
+#    - https
+# Added by API Auto Mocking Plugin
+#basePath: /cmjimenez90/ShareablePlaylistAPI/1.0.0

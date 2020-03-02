@@ -1,6 +1,6 @@
 {
   "name": "@mussia/gateway1",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "description": "> TODO: description",
   "author": "yurikrupnik <krupnik.yuri@gmail.com>",
   "homepage": "https://github.com/yurikrupnik/mussia3/tree/master/packages/gateways/gateway1#readme",
@@ -17,8 +17,8 @@
     "port": "9011",
     "modulePath": "/packages/gateways/gateway1",
     "docker_image_name": "mussia3_gateway1",
-    "docker_image_org_name": "yurikrupnik",
-    "project": "mussia3",
+    "docker_image_org_name": "creativearis99",
+    "project": "aris-stat",
     "service": "gateway1"
   },
   "repository": {
