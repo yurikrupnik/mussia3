@@ -17,8 +17,8 @@
     "port": "7000",
     "modulePath": "/packages/services/users",
     "docker_image_name": "mussia3_users",
-    "docker_image_org_name": "yurikrupnik",
-    "project": "mussia3",
+    "docker_image_org_name": "creativearis99",
+    "project": "aris-stat",
     "service": "users",
     "db": "ds215759.mlab.com:15759/client-app-users"
   },

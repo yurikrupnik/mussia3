@@ -17,7 +17,7 @@ docker tag $name \
   $gc_image
 #
 docker push gcr.io/$npm_package_config_project/$npm_package_config_service
-#
+
 gcloud run deploy $npm_package_config_service \
   --image $gc_image \
   --platform managed \

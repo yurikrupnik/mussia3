@@ -30,7 +30,12 @@ const ProjectSchema = new Schema({
 });
 
 const Model = mongoose.model(dbModel, ProjectSchema);
-
+// Model.remove().then((response) => {
+//     console.log(response);
+// })
+//     .catch((error) => {
+//         console.log(error);
+//     });
 Model.find({}).then((res) => {
     if (!res.length) {
         new Model({

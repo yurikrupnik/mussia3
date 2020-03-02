@@ -17,8 +17,8 @@
     "port": "9011",
     "modulePath": "/packages/gateways/gateway1",
     "docker_image_name": "mussia3_gateway1",
-    "docker_image_org_name": "yurikrupnik",
-    "project": "mussia3",
+    "docker_image_org_name": "creativearis99",
+    "project": "aris-stat",
     "service": "gateway1"
   },
   "repository": {
