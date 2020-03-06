@@ -4,6 +4,10 @@
 
 const { func2 } = require('../index');
 
+function chainObject() {
+    return this;
+}
+
 it('func2 test', () => {
     // Mock ExpressJS 'req' and 'res' parameters
     // const name = uuid.v4();
@@ -14,16 +18,16 @@ it('func2 test', () => {
         },
     };
 
-    const send = jest.fn();
+    const json = jest.fn();
     // const stub = sinon.stub();
 
-    const res = { status: jest.fn(), send };
+    const res = { status: jest.fn(chainObject), json };
 
     // console.log('s', s);
     // Call tested function
     func2(req, res);
-    expect(send).toHaveBeenCalledTimes(1);
-    expect(send).toHaveBeenCalledWith({ all: 'func2 response' });
+    expect(json).toHaveBeenCalledTimes(1);
+    expect(json).toHaveBeenCalledWith({ ok: 'yes' });
     // expect(send.calls.length).toHaveBeenCalledTimes(1)
     // console.log('res.send.mock.calls', res.send.mock.calls);
     // console.log('res.send.mock.calls', res.send.calls.length);

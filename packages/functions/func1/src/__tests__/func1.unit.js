@@ -4,23 +4,33 @@
 
 const { func1 } = require('../index');
 
+function chainObject() {
+    return this;
+}
+
+
 it('func1 test', () => {
     // Mock ExpressJS 'req' and 'res' parameters
     // const name = uuid.v4();
     const req = {
         query: {},
         body: {
-            name: 'yuri'
+            // name: 'yuri'
         },
     };
-    const res = { status: jest.fn(), send: jest.fn() };
+    const res = {
+        status: jest.fn(chainObject),
+        json: jest.fn()
+    };
 
     // console.log('s', s);
     func1(req, res);
+    // api(req, res);
 
     // Verify behavior of tested function
-    expect(res.send).toHaveBeenCalledTimes(1);
-    expect(res.send).toHaveBeenCalledWith({ all: 'aa' });
+    expect(1).toBe(1);
+    expect(res.json).toHaveBeenCalledTimes(1);
+    expect(res.json).toHaveBeenCalledWith({ ok: 'yes' });
     // assert.ok(res.send.calledOnce);
     // assert.deepStrictEqual(res.send.firstCall.args, [{ all: 'aa' }]);
 });
