@@ -45,7 +45,7 @@
     "mongoose": "^5.9.2",
     "morgan": "^1.9.1",
     "node-fetch": "^2.6.0",
-    "react": "^16.12.0",
+    "react": "^16.13.1",
     "react-dom": "^16.13.0",
     "react-router-dom": "^5.1.2"
   }
