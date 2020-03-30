@@ -56,7 +56,7 @@
     "swagger-ui-express": "^4.1.0"
   },
   "devDependencies": {
-    "@testing-library/react": "^9.3.3",
+    "@testing-library/react": "^10.0.2",
     "lodash.reduce": "^4.6.0",
     "react-styleguidist": "^10.3.2"
   },
