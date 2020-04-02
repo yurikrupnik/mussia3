@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
-    "chalk": "^3.0.0",
+    "chalk": "^4.0.0",
     "mongodb": "^3.5.3",
     "mongoose": "^5.9.2",
     "node-fetch": "^2.6.0"
