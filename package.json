@@ -85,7 +85,7 @@
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "postcss-loader": "^3.0.0",
     "postcss-plugin": "^1.0.0",
-    "prettier": "^1.19.1",
+    "prettier": "^2.0.5",
     "puppeteer": "^2.0.0",
     "raw-loader": "^4.0.0",
     "rollup": "^1.29.0",
