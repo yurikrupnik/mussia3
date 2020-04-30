@@ -1,1 +1,1 @@
- --scope func1 --scope func2 --scope @mussia/gateway1 --scope @mussia/projects --scope @mussia/users --scope firebase --scope @mussia/webserver1
+ --scope @mussia/webserver1
