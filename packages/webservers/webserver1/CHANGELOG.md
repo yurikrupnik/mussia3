@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.14](https://github.com/yurikrupnik/mussia3/compare/@mussia/webserver1@6.0.13...@mussia/webserver1@6.0.14) (2020-03-06)
+
+**Note:** Version bump only for package @mussia/webserver1
+
+
+
+
+
 ## [6.0.13](https://github.com/yurikrupnik/mussia3/compare/@mussia/webserver1@6.0.12...@mussia/webserver1@6.0.13) (2020-03-06)
 
 **Note:** Version bump only for package @mussia/webserver1
