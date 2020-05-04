@@ -10,6 +10,7 @@ const destHost = process.env.DESTINATION_HOST || process.env.DOCKER_HOST || 'htt
 // const usersEndpoint = process.env.USERS_ENDPOINT || '';
 // console.log('process.env.npm_package_config_port', process.env.npm_package_config_port);
 const port = Number(process.env.PORT) || 7000;
+console.log('port', port)
 const isProd = process.env.NODE_ENV === 'production';
 const host = process.env.HOST || 'http://localhost';
 const destPort = Number(process.env.DEST_PORT) || 3000;

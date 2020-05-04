@@ -1,4 +1,6 @@
 FROM yurikrupnik/client-apps_lerna AS builder
+ARG port=8080
+ENV PORT=$port
 
 ARG distFolder=lib
 ARG modulePath=.

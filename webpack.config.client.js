@@ -97,15 +97,15 @@ module.exports = (env) => {
         },
         plugins: [
             new webpack.DefinePlugin({
-                'process.env.USERS_ENDPOINT': JSON.stringify(process.env.USERS_ENDPOINT),
-                'process.env.PORT': JSON.stringify(process.env.PORT),
-                'process.env.port': JSON.stringify(process.env.port),
-                'process.env.host': JSON.stringify(process.env.host),
-                'process.env.HOST': JSON.stringify(process.env.HOST),
-                'process.env.dest_port': JSON.stringify(process.env.dest_port),
-                'process.env.DEST_PORT': JSON.stringify(process.env.DEST_PORT),
-                'process.env.DESTINATION_HOST': JSON.stringify(process.env.DESTINATION_HOST),
-                'process.env.DOCKER_HOST': JSON.stringify(process.env.DOCKER_HOST)
+                // 'process.env.USERS_ENDPOINT': JSON.stringify(process.env.USERS_ENDPOINT),
+                // 'process.env.PORT': JSON.stringify(process.env.PORT),
+                // 'process.env.port': JSON.stringify(process.env.port),
+                // 'process.env.host': JSON.stringify(process.env.host),
+                // 'process.env.HOST': JSON.stringify(process.env.HOST),
+                // 'process.env.dest_port': JSON.stringify(process.env.dest_port),
+                // 'process.env.DEST_PORT': JSON.stringify(process.env.DEST_PORT),
+                // 'process.env.DESTINATION_HOST': JSON.stringify(process.env.DESTINATION_HOST),
+                // 'process.env.DOCKER_HOST': JSON.stringify(process.env.DOCKER_HOST)
             }),
             new HtmlWebpackPlugin({
                 template: 'index.ejs',

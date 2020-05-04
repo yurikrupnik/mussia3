@@ -1,120 +1,128 @@
 version: '3'
 services:
-#  functions:
-#    image: yurikrupnik/client-apps_func1
-#    build:
-#      context: packages/functions
-##      root: packages/functions
-#    container_name: func1
-#    ports:
-#      - 3334:3334
-#      - 3333:3333
-#    command: npm run fucntion
+    #  functions:
+    #    image: yurikrupnik/client-apps_func1
+    #    build:
+    #      context: packages/functions
+    ##      root: packages/functions
+    #    container_name: func1
+    #    ports:
+    #      - 3334:3334
+    #      - 3333:3333
+    #    command: npm run fucntion
 
+    lerna:
+        image: yurikrupnik/client-apps_lerna
+        build: .
+#            context: .
+#            args:
+#                - modulePath=/packages/gateways/gateway1
+            #        - port=6002
+        container_name: lerna
+    #  docs:
+    #    image: yurikrupnik/client-apps_docs
+    #    build:
+    #      context: .
+    #      dockerfile: Dockerfile.docs
+    #    container_name: docs
+    #    ports:
+    #      - 6002:6002
 
-#  docs:
-#    image: yurikrupnik/client-apps_docs
-#    build:
-#      context: .
-#      dockerfile: Dockerfile.docs
-#    container_name: docs
-#    ports:
-#      - 6002:6002
+    gateway1:
+        image: yurikrupnik/client-apps_gateway1
+        build:
+            context: packages/gateways/gateway1
+            args:
+                - modulePath=/packages/gateways/gateway1
+        #        - port=6002
+        container_name: gateway1
+        ports:
+            - 8080:8080
+        #      - 6002:6002
+        environment:
+            - PORT=8000
+            - DEST_PORT=7000
+            - USERS_HOST=http://service1:7000
+            - PROJECTS_HOST=http://projects:7001
+        command: npm run start
+    #    depends_on:
+    #      - service1
+    #      - projects
 
-  gateway1:
-    image: yurikrupnik/client-apps_gateway1
-    build:
-      context: packages/gateways/gateway1
-      args:
-        - modulePath=/packages/gateways/gateway1
-#        - port=6002
-    container_name: gateway1
-    ports:
-      - 8080:8080
-#      - 6002:6002
-    environment:
-      - PORT=8000
-      - DEST_PORT=7000
-      - USERS_HOST=http://service1:7000
-      - PROJECTS_HOST=http://projects:7001
-    command: npm run start
-#    depends_on:
-#      - service1
-#      - projects
-
-  db:
-    image: mongo
-    ports:
-      - 27017:27017
-  db2:
-    image: mongo
-    ports:
-      - 27018:27017
-  projects:
-    image: yurikrupnik/client-apps_projects
-    build:
-      context: packages/services/projects
-      args:
-        - modulePath=/packages/services/projects
-#        - port=6002
-    container_name: projects
-    environment:
-      - port=6002
-      - DATABASE_URL=mongodb://db2/projects
-    ports:
-      - 6002:6002
-    command: npm run start
-    depends_on:
-      - db2
-  users:
-    image: creativearis99/mussia3_service1
-    build:
-      context: packages/services/users
-      args:
-        - modulePath=/packages/services/users
-    #      dockerfile:
-    #      args:
-    #        - HOST=0.0.0.0
-    container_name: users
-    environment:
-      - DATABASE_URL=mongodb://db/users
-#      - PORT=
-      #      - NODE_ENV_DOCKER=true
-    #      - DATABASE_URL=${users_db}
-    ports:
-      - 8014:8080
-    depends_on:
-      - db
-    command: npm run start
-  webserver1:
-    image: creativearis99/mussia3_webserver1
-    build:
-      context: packages/webservers/webserver1
-      args:
-        - modulePath=/packages/webservers/webserver1
-    container_name: webserver1
-#    environment:
-#      - DEST_PORT=8000
-#      - PORT=9000
-#      - DESTIN+ATION_HOST=http://gateway1
-    ports:
-      - 7000:7000
-      - 9000:8080
-#    command: npm run start
-#    depends_on:
-#      - gateway1
-  webserver2:
-    image: reativearis99/mussia3_webserver2
-    build:
-      context: packages/webservers/webserver2
-      args:
-        - modulePath=/packages/webservers/webserver2
-    container_name: webserver2
-    environment:
-      - DEST_PORT=8000
-      - MODULE_PATH=packages/webservers/webserver2
-#      - PORT=9001
-      - DESTINATION_HOST=http://gateway1
-    ports:
-      - 9001:8080
+    db:
+        image: mongo
+        ports:
+            - 27017:27017
+    db2:
+        image: mongo
+        ports:
+            - 27018:27017
+    projects:
+        image: yurikrupnik/client-apps_projects
+        build:
+            context: packages/services/projects
+            args:
+                - modulePath=/packages/services/projects
+        #        - port=6002
+        container_name: projects
+        environment:
+            - port=6002
+            - DATABASE_URL=mongodb://db2/projects
+        ports:
+            - 6002:6002
+        command: npm run start
+        depends_on:
+            - db2
+    users:
+        image: creativearis99/mussia3_service1
+        build:
+            context: packages/services/users
+            args:
+                - modulePath=/packages/services/users
+        #      dockerfile:
+        #      args:
+        #        - HOST=0.0.0.0
+        container_name: users
+        environment:
+            - DATABASE_URL=mongodb://db/users
+            #      - PORT=
+            #      - NODE_ENV_DOCKER=true
+        #      - DATABASE_URL=${users_db}
+        ports:
+            - 8014:8080
+        depends_on:
+            - db
+        command: npm run start
+    webserver1:
+        image: creativearis99/mussia3_webserver1
+        build:
+            context: packages/webservers/webserver1
+            args:
+                - modulePath=/packages/webservers/webserver1
+        container_name: webserver1
+        environment:
+            #      - DEST_PORT=8000
+            - PORT=8000
+        #      - DESTIN+ATION_HOST=http://gateway1
+        ports:
+            - 7000:7000
+            - 9000:8080
+            - 8000:8000
+    #    command: npm run start
+    #    depends_on:
+    #      - gateway1
+    webserver2:
+        image: reativearis99/mussia3_webserver2
+        build:
+            context: packages/webservers/webserver2
+            args:
+                - modulePath=/packages/webservers/webserver2
+        container_name: webserver2
+        environment:
+            - DEST_PORT=8000
+            - MODULE_PATH=packages/webservers/webserver2
+            #      - PORT=9001
+            - DESTINATION_HOST=http://gateway1
+        ports:
+            - 9001:8080
 #    command: npm run start

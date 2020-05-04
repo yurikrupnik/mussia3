@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './components/App';
 import routes from './components/routes';
 import config from './config';
+import providers from './api/providers';
 import './styles/_index.scss';
 
 const theme = {
@@ -24,7 +25,7 @@ if (!config.isProd) {
             <App
                 userAgent={global.navigator.userAgent}
                 routes={routes}
-                providers={[]}
+                providers={providers}
                 theme={theme}
             />
         </BrowserRouter>,
@@ -37,7 +38,7 @@ if (!config.isProd) {
                 <App
                     userAgent={global.navigator.userAgent}
                     routes={routes}
-                    providers={[]}
+                    providers={providers}
                     theme={theme}
                 />
             </BrowserRouter>,

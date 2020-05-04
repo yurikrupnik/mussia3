@@ -1,5 +1,11 @@
 import mongoose, { Schema } from 'mongoose';
 import { dbModel } from './config';
+
+/*
+*
+* @requires mongoose
+* */
+
 // import { schema } from '@krupnik/express-responses';
 
 /**
@@ -26,9 +32,10 @@ import { dbModel } from './config';
 
 /**
  * @module UserSchema
- * @param {string} email email
- * @param {string} name name
- * @param {string} hashPassword hashPassword
+ * @param {string=} email required shit
+ * @param {string} name required shit
+ * @param {string} hashPassword required shit
+ * @param {string} id not requred
  */
 const UserSchema = new Schema({
     /**
@@ -40,7 +47,7 @@ const UserSchema = new Schema({
         required: true
     },
     /**
-     * @member {string} email
+     * @member {string=} email
      */
     email: { type: String, required: true },
     /**
@@ -70,4 +77,7 @@ Model.find({}).then((res) => {
 // console.log('UserSchema', UserSchema);
 
 export default Model;
+const r = new Model({
+    email: {}
+});
 export { UserSchema };

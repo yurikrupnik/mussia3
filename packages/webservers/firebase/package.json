@@ -24,7 +24,7 @@
     "url": "git+https://github.com/yurikrupnik/mussia3.git"
   },
   "scripts": {
-    "start": "run-p start:client start:server serve",
+    "starts": "run-p start:client start:server serve",
     "start:server": "webpack --config=webpack.config.server.js -w --color",
     "start:client": "webpack --config=webpack.config.client.js -w --color",
     "prebuild": "rimraf dist functions",

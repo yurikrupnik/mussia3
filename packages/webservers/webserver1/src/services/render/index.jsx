@@ -50,6 +50,7 @@ const render = (App, routes, fileLocation) => {
                     </StaticRouter>
                 ));
                 const tags = extractor.getScriptTags();
+                console.log('html', html.length)
                 // const links = extractor.getLinkTags();
                 const state = {
                     title,

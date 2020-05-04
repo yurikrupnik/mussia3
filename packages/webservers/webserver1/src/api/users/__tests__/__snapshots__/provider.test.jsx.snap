@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`users provider renders Projects Provider 1`] = `
+<ContextProvider
+  value={
+    Object {
+      "data": Array [],
+      "fetch": [Function],
+      "loading": false,
+      "selected": null,
+      "setSelected": [Function],
+    }
+  }
+>
+  <Component />
+</ContextProvider>
+`;

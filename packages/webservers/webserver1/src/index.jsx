@@ -10,6 +10,8 @@ import render from './services/render';
 import server from './services/socket/server';
 import App from './components/App';
 import routes from './components/routes';
+import providers from './api/providers';
+
 import {
     port, isProd, destPort, destHost
 } from './config';

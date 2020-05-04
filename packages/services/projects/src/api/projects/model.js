@@ -13,32 +13,46 @@ import { dbModel } from './config';
 // });
 //
 // const UserModel = mongoose.model(dbModel, UserSchema);
+
 /**
- * @constructor ProjectSchema
- * @param {string} name sss
- * @param {string} description description
- * @param {string} user user jiji
+ * @module ProjectSchema
+ * @param {string} name email
+ * @param {string} description name
+ * @param {string} user hashPassword
  */
 const ProjectSchema = new Schema({
+    /*
+    * @member {String} name
+    * */
     name: {
         type: String,
         index: true,
         required: true
     },
+    /*
+    * @member {String} description
+    * */
     description: { type: String },
     user: { type: Schema.Types.ObjectId, ref: 'User' }
 });
 
-const Model = mongoose.model(dbModel, ProjectSchema);
+/**
+ * @constructor ProjectsModel
+ * @param {string} name sss
+ * @param {string} description description
+ * @param {string} user user jiji
+ */
+
+const ProjectsModel = mongoose.model(dbModel, ProjectSchema);
 // Model.remove().then((response) => {
 //     console.log(response);
 // })
 //     .catch((error) => {
 //         console.log(error);
 //     });
-Model.find({}).then((res) => {
+ProjectsModel.find({}).then((res) => {
     if (!res.length) {
-        new Model({
+        new ProjectsModel({
             // email: 'Project1',
             name: 'Project 1',
             description: 'Some description',
@@ -48,5 +62,5 @@ Model.find({}).then((res) => {
     }
 });
 
-export default Model;
+export default ProjectsModel;
 export { ProjectSchema };

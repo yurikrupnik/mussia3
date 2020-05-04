@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import Drawer from '@material-ui/core/Drawer';
@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-
+import { Context } from '../../../api/auth/context';
 // import FormControl from '@material-ui/core/FormControl';
 // import Select from '@material-ui/core/Select';
 
@@ -36,6 +36,9 @@ const regularRoutes = [
 ];
 
 const DefaultHeader = (props) => {
+
+    const auth = useContext(Context);
+    console.log('auth', auth)
     const { location } = props;
     const { pathname } = location;
     if (pathname.includes('dashboard')) {
