@@ -71,7 +71,7 @@
   },
   "devDependencies": {
     "@testing-library/react": "^9.3.3",
-    "copy-webpack-plugin": "^5.1.1",
+    "copy-webpack-plugin": "^6.0.1",
     "firebase-functions-test": "^0.1.6",
     "firebase-tools": "^7.11.0",
     "moxios": "^0.4.0",
