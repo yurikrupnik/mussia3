@@ -42,7 +42,7 @@
     "co": "^4.6.0",
     "express": "^4.17.1",
     "mongodb-client-encryption": "^1.0.1",
-    "mongoose": "^5.9.2",
+    "mongoose": "^5.9.15",
     "morgan": "^1.9.1",
     "node-fetch": "^2.6.0",
     "react": "^16.12.0",
