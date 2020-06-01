@@ -75,7 +75,7 @@
     "jsdoc-webpack-plugin-v2": "^2.0.2",
     "lerna": "^3.20.2",
     "lerna-update-wizard": "^0.17.7",
-    "less": "^3.10.3",
+    "less": "^3.11.2",
     "less-loader": "^5.0.0",
     "lodash": "^4.17.15",
     "mini-css-extract-plugin": "^0.9.0",
