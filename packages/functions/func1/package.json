@@ -34,7 +34,7 @@
     "supertest": "^4.0.2"
   },
   "dependencies": {
-    "@google-cloud/translate": "^5.1.2",
+    "@google-cloud/translate": "^6.0.0",
     "@mussia/button": "^5.0.3",
     "@mussia/express-responses": "^2.0.0",
     "@mussia/render": "^2.0.0",
