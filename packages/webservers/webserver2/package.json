@@ -46,7 +46,7 @@
     "url": "https://github.com/yurikrupnik/mussia3/issues"
   },
   "dependencies": {
-    "@material-ui/core": "4.8.3",
+    "@material-ui/core": "4.11.3",
     "@mussia/button": "^5.0.3",
     "@mussia/button-list": "^6.0.3",
     "@mussia/list": "^6.0.4",
