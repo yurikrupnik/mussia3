@@ -30,6 +30,6 @@
     "url": "https://github.com/yurikrupnik/mussia3/issues"
   },
   "dependencies": {
-    "mongoose": "^5.9.2"
+    "mongoose": "^5.12.2"
   }
 }
