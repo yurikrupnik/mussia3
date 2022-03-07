@@ -33,7 +33,7 @@
     "supertest": "4.0.2"
   },
   "dependencies": {
-    "axios": "0.19.2",
+    "axios": "0.20.0",
     "chalk": "3.0.0",
     "mongodb": "3.5.3",
     "mongoose": "5.9.2",
