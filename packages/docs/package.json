@@ -58,7 +58,7 @@
   "devDependencies": {
     "@testing-library/react": "9.5.0",
     "lodash.reduce": "4.6.0",
-    "react-styleguidist": "11.1.2"
+    "react-styleguidist": "11.2.0"
   },
   "jest": {
     "moduleNameMapper": {
