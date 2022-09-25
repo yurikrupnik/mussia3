@@ -54,7 +54,7 @@
     "swagger-ui-express": "4.1.2"
   },
   "devDependencies": {
-    "@google-cloud/functions-framework": "1.4.0",
+    "@google-cloud/functions-framework": "1.10.0",
     "moxios": "0.4.0",
     "npm-watch": "0.6.0",
     "supertest": "4.0.2"
