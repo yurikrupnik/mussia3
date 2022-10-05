@@ -37,16 +37,16 @@
     "url": "https://github.com/yurikrupnik/mussia3/issues"
   },
   "dependencies": {
-    "axios": "^0.19.1",
+    "axios": "^0.21.3",
     "body-parser": "1.19.0",
     "cors": "2.8.5",
     "express": "4.17.1",
     "express-http-proxy": "1.6.0",
     "helmet": "3.21.2",
     "morgan": "1.9.1",
-    "socket.io": "^2.2.0",
-    "socket.io-client": "2.3.0",
-    "swagger-ui-express": "4.1.2"
+    "socket.io": "^3.0.0",
+    "socket.io-client": "2.4.0",
+    "swagger-ui-express": "4.2.0"
   },
   "devDependencies": {
     "moxios": "0.4.0"
