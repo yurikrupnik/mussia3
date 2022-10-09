@@ -24,7 +24,9 @@
     "lint": "eslint src --ext .js,.jsx --color",
     "test": "jest src --colors",
     "build": "rollup --config=../../../rollup.config.js",
-    "patch": "npm version patch && npm publish"
+    "patch": "npm version patch && npm publish",
+    "prepare": "npm run snyk-protect",
+    "snyk-protect": "snyk-protect"
   },
   "bugs": {
     "url": "https://github.com/yurikrupnik/mussia3/issues"
@@ -48,7 +50,9 @@
   },
   "dependencies": {
     "@mussia/button": "^5.0.3",
-    "react-select": "^3.0.8"
+    "react-select": "^3.0.8",
+    "@snyk/protect": "latest"
   },
-  "gitHead": "1800f9c7794bc75b7f6f0c0760033e74fa408b6c"
+  "gitHead": "1800f9c7794bc75b7f6f0c0760033e74fa408b6c",
+  "snyk": true
 }
