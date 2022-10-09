@@ -40,7 +40,9 @@
     "docker:stop": "docker stop $(docker ps -q)",
     "docker:local": "run-s docker:build docker:run docker:test docker:stop",
     "predeploy": "npm run build",
-    "deploy": "gcloud app deploy ./dist/app.yml"
+    "deploy": "gcloud app deploy ./dist/app.yml",
+    "prepare": "npm run snyk-protect",
+    "snyk-protect": "snyk-protect"
   },
   "bugs": {
     "url": "https://github.com/yurikrupnik/mussia3/issues"
@@ -52,10 +54,10 @@
     "@mussia/list": "^6.0.4",
     "@mussia/render": "^2.0.0",
     "@mussia/screen1": "^7.0.4",
-    "axios": "0.19.1",
+    "axios": "0.21.3",
     "cors": "2.8.5",
     "custom-react": "3.0.3",
-    "ejs": "3.0.1",
+    "ejs": "3.1.7",
     "express": "4.17.1",
     "express-http-proxy": "1.6.0",
     "formik": "2.1.1",
@@ -68,9 +70,10 @@
     "react-render-html": "0.6.0",
     "react-router": "5.1.2",
     "react-router-dom": "5.1.2",
-    "socket.io": "2.3.0",
-    "socket.io-client": "2.3.0",
-    "styled-components": "5.0.1"
+    "socket.io": "3.0.0",
+    "socket.io-client": "2.4.0",
+    "styled-components": "5.0.1",
+    "@snyk/protect": "latest"
   },
   "devDependencies": {
     "@testing-library/react": "9.5.0",
@@ -85,5 +88,6 @@
     "moduleNameMapper": {
       "\\.(css|less|scss)$": "identity-obj-proxy"
     }
-  }
+  },
+  "snyk": true
 }
