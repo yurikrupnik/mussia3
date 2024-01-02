@@ -55,7 +55,7 @@
     "@mussia/list-styled": "^6.0.4",
     "@mussia/render": "^2.0.0",
     "@mussia/screen1": "^7.0.4",
-    "axios": "0.19.1",
+    "axios": "0.21.1",
     "cors": "2.8.5",
     "custom-react": "3.0.3",
     "ejs": "3.0.1",
