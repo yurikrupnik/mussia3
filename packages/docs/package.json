@@ -42,7 +42,7 @@
   "dependencies": {
     "@material-ui/core": "4.11.3",
     "@mussia/render": "^2.0.0",
-    "axios": "^0.19.1",
+    "axios": "^0.21.1",
     "ejs": "3.0.1",
     "express": "4.17.1",
     "helmet": "3.21.2",
