@@ -59,7 +59,7 @@
     "cors": "2.8.5",
     "custom-react": "3.0.3",
     "ejs": "3.0.1",
-    "express": "4.17.1",
+    "express": "4.21.0",
     "express-http-proxy": "1.6.0",
     "formik": "2.1.1",
     "helmet": "3.21.2",
