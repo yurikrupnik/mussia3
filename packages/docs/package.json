@@ -44,7 +44,7 @@
     "@mussia/render": "^2.0.0",
     "axios": "^0.19.1",
     "ejs": "3.0.1",
-    "express": "4.17.1",
+    "express": "4.20.0",
     "helmet": "3.21.2",
     "morgan": "1.9.1",
     "prop-types": "15.7.2",
