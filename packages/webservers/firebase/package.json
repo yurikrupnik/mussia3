@@ -50,7 +50,7 @@
     "cors": "2.8.5",
     "custom-react": "3.0.3",
     "ejs": "3.0.1",
-    "express": "4.17.1",
+    "express": "4.20.0",
     "express-http-proxy": "1.6.0",
     "firebase": "^7.6.1",
     "firebase-admin": "8.13.0",
